@@ -1,0 +1,294 @@
+<!--Main Navigation-->
+<header>
+  <!-- Sidebar -->
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" id="navbarCollapse">
+    <div class="position-sticky" style="max-height: calc(100vh - 56px); overflow-y: auto;">
+      <a class="navbar-brand ms-5  d-lg-block d-none" href="#">
+
+        <img
+             src="assets/img/9antrakids.png"
+             height="30"
+             alt=""
+             loading="lazy"
+             />
+      </a>
+      <div class="mt-4 border-bottom border-top py-3">
+      <div class="nav-profile d-flex align-items-center ms-4 pe-0 text-black "   >
+        <img   [src]="data.image ? 'assets/Documents/' + data.image : 'assets/img/profile-img.jpg'" alt="Profile" width="50px" height="50px" class="rounded-circle">
+        <span class="ps-2 fw-bold"> <br>{{username}}</span> <a class="ps-4" routerLink="profile"><i class="btn  bi bi-gear" ></i></a>
+
+      </div>
+        <a class="ps-4" routerLink="/" style="color:#d92a72">Welcome page <i class="bi bi-arrow-return-left"></i></a>
+      <!-- End Profile Iamge Icon --></div>
+      <div class="list-group list-group-flush mx-3 mt-5">
+        <a
+           [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}"  routerLink="/admin"
+           class="list-group-item list-group-item-action py-3 "
+           aria-current="true"
+           data-bs-toggle="collapse"
+           data-bs-target="#navbarCollapse"
+           >
+          <i class="fa-solid fa-house fa-fw me-3"></i
+            ><span>Home</span>
+        </a>
+        <a
+        class="list-group-item list-group-item-action py-2 "
+        aria-current="true"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseFilter"
+        href="#collapseExample1"
+        aria-expanded="true"
+        aria-controls="collapseExample1"
+      >
+      <i class="fa-solid fa-repeat me-3"></i><span class="me-5">Update</span><i class="fa-solid fa-sort-down ms-5 mb-2"></i>
+        </a>
+      <!-- Collapsed content -->
+      <ul id="collapseFilter" class="collapse  list-group list-group-flush">
+        <li class="list-group-item ">
+          <a routerLink="categories" [routerLinkActive]="'active'" class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Update Categories</a>
+        </li>
+        <li class="list-group-item ">
+          <a routerLink="chapters" [routerLinkActive]="'active'" class="list-group-item list-group-item-action " data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Update Chapters</a>
+        </li>
+        <li class="list-group-item ">
+          <a routerLink="hackerspace" [routerLinkActive]="'active'" class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Update hackerspaces</a>
+        </li>
+        <li class="list-group-item ">
+          <a routerLink="sessionform" [routerLinkActive]="'active'" class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Add sessions</a>
+        </li>
+        <li class="list-group-item ">
+          <a routerLink="trainings" [routerLinkActive]="'active'" class="list-group-item list-group-item-action " data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Update trainings</a>
+        </li>
+      </ul>
+        <a [routerLinkActive]="'active'"   routerLink="groups"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+           class="list-group-item list-group-item-action py-3  "
+           >
+           <i class="fa-solid fa-user-group me-3"></i><span>Groups</span>
+        </a>
+        <a
+        [routerLinkActive]="'active'"   routerLink="coachlist"data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+        class="list-group-item list-group-item-action py-3 "
+           ><i class="fa-solid fa-user me-3"></i><span>Coachs</span></a
+          >
+        <a
+        [routerLinkActive]="'active'"   routerLink="studentlist"
+        data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+           class="list-group-item list-group-item-action py-3 "
+           ><i class="fa-solid fa-user-graduate me-3"></i><span>Students</span></a
+          >
+      <!-- Collapsed content -->
+      <a
+      [routerLinkActive]="'active'"   routerLink="feedback"
+         class="list-group-item list-group-item-action py-3 "
+         data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+         >
+         <i class="fa-solid fa-folder fa-fw me-3"></i><span>Feedback</span>
+      </a>
+      <a
+        class="list-group-item list-group-item-action py-2 "
+        aria-current="true"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseFilter1"
+        href="#collapseExample2"
+        aria-expanded="true"
+        aria-controls="collapseExample1"
+      >
+      <i class="fa-solid fa-folder fa-fw me-3"></i><span class="me-5">  Projects</span><i class="fa-solid fa-sort-down ms-5 mb-2"></i>
+      </a>
+      <!-- Collapsed content -->
+      <ul id="collapseFilter1" class="collapse  list-group list-group-flush">
+        <li class="list-group-item ">
+          <a routerLink="projectowner" [routerLinkActive]="'active'" class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Project Owners</a>
+        </li>
+        <li class="list-group-item ">
+          <a routerLink="projects" [routerLinkActive]="'active'" class="list-group-item list-group-item-action " data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Projects</a>
+        </li>
+        <li class="list-group-item ">
+          <a  routerLink="projectclients" [routerLinkActive]="'active'" class="list-group-item list-group-item-action " data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Project Clients</a>
+        </li>
+        <li class="list-group-item ">
+          <a routerLink="specificproject" [routerLinkActive]="'active'" class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Specific project</a>
+        </li>
+      </ul>
+     <!-- ... -->
+      <a
+      class="list-group-item list-group-item-action py-2"
+      aria-current="true"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseFilter2"
+      href="#collapseExample7"
+      aria-expanded="true"
+      aria-controls="collapseExample2"
+      >
+      <i class="fa-solid fa-folder fa-fw me-3"></i>
+      <span class="me-5"> Jobs    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <i class="fa-solid fa-sort-down ms-5 mb-2 arrow-up"></i>
+      </a>
+<!-- ... -->
+
+      <!-- Collapsed content -->
+      <ul id="collapseFilter2" class="collapse  list-group list-group-flush">
+        <li class="list-group-item ">
+          <a routerLink="company" [routerLinkActive]="'active'" class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Company</a>
+        </li>
+        <li class="list-group-item ">
+          <a routerLink="list-offer" [routerLinkActive]="'active'" class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Offers</a>
+        </li>
+        <li class="list-group-item ">
+          <a routerLink="all-specific-offer" [routerLinkActive]="'active'" class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Specific Offers</a>
+        </li>
+        <li class="list-group-item ">
+          <a routerLink="candidacy" [routerLinkActive]="'active'" class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse">Candidacy
+
+          </a>
+        </li>
+
+        </ul>
+
+        <a class="list-group-item list-group-item-action py-2 " aria-current="true"  data-bs-toggle="collapse"
+        data-bs-target="#collapseFilter3"
+          href="#e-learning" aria-expanded="true" aria-controls="e-learning">
+          <i class="fa-solid fa-graduation-cap me-2"></i><span class="me-3">E-Learning</span><i
+            class="fa-solid fa-sort-down ms-5 mb-2"></i>
+        </a>
+        <ul id="collapseFilter3" class="collapse  list-group list-group-flush" >
+          <li class="list-group-item ">
+            <a routerLink="events" [routerLinkActive]="'active'"
+            data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+              class="list-group-item list-group-item-action">Events</a>
+          </li>
+          <li class="list-group-item ">
+            <a routerLink="courses" [routerLinkActive]="'active'"
+            data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+              class="list-group-item list-group-item-action">Courses</a>
+          </li>
+          <li class="list-group-item ">
+            <a routerLink="chaptersE" [routerLinkActive]="'active'"
+            data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+              class="list-group-item list-group-item-action">Chapters</a>
+          </li>
+          <li class="list-group-item ">
+            <a routerLink="lessons" [routerLinkActive]="'active'"
+            data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+              class="list-group-item list-group-item-action">Lessons</a>
+          </li>
+          <li class="list-group-item ">
+            <a routerLink="reports" [routerLinkActive]="'active'"
+            data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+              class="list-group-item list-group-item-action">Reports</a>
+          </li>
+          <li class="list-group-item ">
+            <a routerLink="paths" [routerLinkActive]="'active'"
+            data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+              class="list-group-item list-group-item-action">Paths</a>
+          </li>
+        </ul>
+
+        <a [routerLinkActive]="'active'" routerLink="demands" class="list-group-item list-group-item-action py-3" data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse">
+          <i class="fa-solid fa-message me-3"></i><span>Demands</span>
+        </a>
+
+        <a [routerLinkActive]="'active'" routerLink="requests" class="list-group-item list-group-item-action py-3" data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse">
+          <i class="fa-solid fa-message me-3"></i><span>Requests</span>
+        </a>
+
+        <!-- <a [routerLinkActive]="'active'" routerLink="groups" class="list-group-item list-group-item-action py-3  ">
+          <i class="fa-solid fa-user-group me-3"></i><span>Groups</span>
+        </a> -->
+        <a
+        [routerLinkActive]="'active'"   routerLink="certificate"
+           class="list-group-item list-group-item-action py-3 "
+           data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+           >
+           <i class="fa-solid fa-folder fa-fw me-3"></i><span>Certificate</span>
+        </a>
+
+        <a
+        [routerLinkActive]="'active'"   routerLink="admin-chatbot"
+           class="list-group-item list-group-item-action py-3 "
+           data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+           >
+           <i class="fa fa-commenting me-3" style="font-size: 20px;"></i><span>ChatBot</span>
+        </a>
+      <!-- Collapse 1 -->
+        <a
+          (click)="logout()"
+           class="list-group-item list-group-item-action border-top " style="margin-top: 120px;"
+           ><i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180 fa-fw me-3"></i><span>LogOut</span></a
+          >
+
+      </div>
+    </div>
+
+  </nav>
+  <!-- Sidebar -->
+
+  <!-- Navbar -->
+  <nav
+       id="main-navbar"
+       class="navbar navbar-expand-lg navbar-light bg-white fixed-top d-block d-lg-none"
+       >
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+              >
+              <img src="assets/img/menu.png" class="w-10" alt="">
+      </button>
+
+      <!-- Brand -->
+      <a class="navbar-brand ms-5 mt-2" href="#">
+        <img
+        style="padding-right: 40px;"
+             src="assets/img/logo1.png"
+             height="30"
+             alt=""
+             loading="lazy"
+             />
+      </a>
+
+
+      <!-- Right links -->
+
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+
+<!--Main layout-->

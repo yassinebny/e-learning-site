@@ -1,0 +1,393 @@
+
+/* logo 
+.navbar-brand {
+  width: 150px;
+}
+
+@media screen and (max-width: 1286px) {
+  .navbar-brand {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .navbar-brand {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .btns {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+/* navbar 
+nav {
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-right: 20px;
+  width: 100%;
+}
+
+/* button d'action 
+.get-started {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 11px 28px;
+  border-radius: 0px;
+  transition: 0.5s;
+  margin: 10px 0 0 0;
+  color: #fff;
+  background: #af3065;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.get-started:hover {
+  background: #d8208e;
+  color: #fff;
+}
+
+/* links navbar 
+.nav-link {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 11px 28px;
+  border-radius: 0px;
+  transition: 0.5s;
+  margin: 10px 0 0 0;
+  color: rgb(49, 49, 49);
+}
+
+.nav-link:hover {
+  color: #fab555;
+}
+
+/* dropdown 
+.dropdown-item:hover {
+  color: #d8208e;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+/* menu sandwitch 
+.navbar-toggler {
+  color: #fff;
+}
+
+/* navbar header 
+#header {
+  padding: 0px 0;
+  background-color: #fff;
+}
+
+.active {
+  color: #fab555;
+}
+
+.user-image-nav {
+  width: 32px;
+  height: 32px;
+  margin-right: 3px;
+}
+
+.user-name {
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+}
+
+.user-email {
+  color: #6c757d;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Style the user dropdown menu 
+.user-menu {
+  width: 320px;
+  /* Adjust the width as needed 
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-menu .user-image {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.disconnect-button {
+  color: #af3065;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Style the divider between menu items 
+.dropdown-divider {
+  margin: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+*/
+/* Base styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, transparent, #cb0d76);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-brand {
+  width: 150px;
+}
+
+.navbar-toggler {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.navbar-collapse {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-item {
+  margin: 0 5px;
+}
+
+.nav-link {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: 0.5s;
+  color: rgb(49, 49, 49);
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #fff;
+  background-color: #b30e5e;
+  transform: scale(1.05);
+}
+
+.nav-link.active {
+  background-color: #fab555;
+  color: #fff;
+}
+
+.get-started {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: 0.5s;
+  margin-left: 10px;
+  color: #fff;
+  background: #af3065;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.get-started:hover {
+  background: #d8208e;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1001;
+  border-radius: 4px;
+  padding: 5px 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.dropdown-item:hover {
+  color: #d8208e;
+  background-color: rgba(0,0,0,0.05);
+}
+
+/* User styles */
+.user-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.user-image-nav {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.user-email {
+  color: #6c757d;
+  margin: 0;
+  font-size: 12px;
+}
+
+.user-menu {
+  width: 250px;
+  padding: 15px;
+  text-align: center;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 991px) {
+  .navbar-toggler {
+    display: block;
+  }
+  
+  .navbar-collapse {
+    display: none; /* Hidden by default on mobile */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .navbar-collapse.show {
+    display: flex; /* Show when toggled */
+  }
+  
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .nav-item {
+    width: 100%;
+    margin: 5px 0;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+  }
+  
+  .get-started {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    display: none;
+  }
+  
+  .dropdown.show .dropdown-menu {
+    display: block;
+  }
+  
+  .user-container {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .user-menu {
+    position: static;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    width: 100px;
+  }
+  
+  .user-info {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    width: 80px;
+  }
+  
+  .navbar {
+    padding: 8px 10px;
+  }
+  
+  .nav-link {
+    font-size: 14px;
+  }
+}

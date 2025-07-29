@@ -1,0 +1,106 @@
+<br><br>
+<div *ngIf="!userIsAdmin">
+  <p class="alert-danger">You must be an admin to delete appointments.</p>
+</div>
+<div>
+  <h2>Add Work hours of each day</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="dayOfWeek">Day of Week</label>
+      <select id="dayOfWeek" [(ngModel)]="newWorkHours.dayOfWeek" name="dayOfWeek" required>
+        <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="start">Start Time</label>
+      <input id="start" type="time" [(ngModel)]="newWorkHours.start" name="start" required>
+    </div>
+    <div>
+      <label for="end">End Time</label>
+      <input id="end" type="time" [(ngModel)]="newWorkHours.end" name="end" required>
+    </div>
+    <button type="submit">Add Work Hours</button>
+  </form>
+</div>
+<div>
+  <h2>Add Break</h2>
+  <form [formGroup]="breakForm" (ngSubmit)="onSubmitBreak()">
+    <div>
+      <label for="subject">Subject:</label>
+      <input id="subject" formControlName="subject" />
+    </div>
+    <div>
+      <label for="startTime">Start Time:</label>
+      <input id="startTime" type="datetime-local" formControlName="startTime" />
+    </div>
+    <div>
+      <label for="endTime">End Time:</label>
+      <input id="endTime" type="datetime-local" formControlName="endTime" />
+    </div>
+    <div>
+      <label for="recurrenceType">Recurrence Type:</label>
+      <select id="recurrenceType" formControlName="recurrenceType" (change)="onRecurrenceTypeChange($event)">
+        <option value="DAILY">Daily</option>
+        <option value="WEEKLY">Weekly</option>
+        <option value="MONTHLY">Monthly</option>
+        <option value="YEARLY">Yearly</option>
+      </select>
+    </div>
+    <div *ngIf="breakForm.get('recurrenceType')?.value === 'WEEKLY'">
+      <label >Days:</label>
+      <div *ngFor="let day of weekDays">
+        <input type="checkbox" [value]="day" (change)="onDayChange($event)"/> {{ day }}
+      </div>
+    </div>
+    <div *ngIf="breakForm.get('recurrenceType')?.value === 'MONTHLY'">
+      <label for="byMonthDa">Day of the Month:</label>
+      <select id="byMonthDa" formControlName="byMonthDay" (change)="onMonthDayChange($event)">
+        <option *ngFor="let day of monthDays" [value]="day">{{ day }}</option>
+      </select>
+    </div>
+    <div *ngIf="breakForm.get('recurrenceType')?.value === 'YEARLY'">
+      <label for="byMonth">Month:</label>
+      <select id="byMonth" formControlName="byMonth" (change)="onMonthChange($event)">
+        <option *ngFor="let month of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]" [value]="month">{{ month }}</option>
+      </select>
+    </div>
+    <div *ngIf="breakForm.get('recurrenceType')?.value === 'YEARLY'">
+      <label for="byMonthDay">Day of the Month:</label>
+      <select id="byMonthDay" formControlName="byMonthDay" (change)="onMonthDayChange($event)">
+        <option *ngFor="let day of monthDays" [value]="day">{{ day }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="isBlock">Is Block:</label>
+      <input id="isBlock" type="checkbox" formControlName="isBlock" />
+    </div>
+    <div>
+      <label for="airlineId">Airline ID:</label>
+      <input id="airlineId" type="number" formControlName="airlineId" />
+    </div>
+    <button type="submit" [disabled]="breakForm.invalid">Add Break</button>
+  </form>
+</div>
+
+
+
+<div class="control-section">
+  <div class="drag-sample-wrapper">
+    <div class="schedule-container">
+
+<ejs-schedule
+
+  [selectedDate]='selectedDate'
+  width="80%"
+  height="550px"
+  [currentView]="currentView"
+  cssClass='schedule-block-events'
+  [eventSettings]='eventSettings'
+  (actionComplete)="onActionComplete($event)"
+  (renderCell)="onRenderCell($event)" (actionBegin)="onActionBegin($event)"
+>
+
+</ejs-schedule>
+<!-- Optionally, add a message to the user -->
+</div></div></div>
+<br><br>

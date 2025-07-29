@@ -1,0 +1,245 @@
+/*body {
+  font-family: "Open Sans", sans-serif;
+  color: #444444;
+}
+
+a {
+  color: #47b2e4;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #73c5eb;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Jost", sans-serif;
+}
+
+.register {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 11px 28px;
+
+  transition: 0.5s;
+  margin: 10px 0 0 0;
+  color: #fff;
+  background: #af3065;
+}
+
+.register:hover {
+  color: #fff;
+  background: #d8208e;
+}
+
+/*--------------------------------------------------------------
+# Sections inscription
+------------------------------------------------------
+#inscription {
+  background-color: #f8f8f8;
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 30px 0;
+  margin-top: 10px;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #383838;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #595959;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1.2rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1.3rem;
+  color: #505050;
+}
+
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #000000;
+  font-weight: 700;
+}
+.trainers .social {
+  margin-top: 15px;
+}
+
+.trainers .social a {
+  color: #98a2b3;
+  transition: 0.3s;
+}
+
+.trainers .social a:hover {
+  color: #fab555;
+}
+
+.trainers .social i {
+  font-size: 18px;
+  margin: 0 2px;
+}
+
+a {
+  color: grey;
+}
+a:hover {
+  color: #af3065;
+  text-decoration: none;
+}
+*/
+
+/* Modern Floating Input Design */
+.form__group {
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.form__field {
+  width: 100%;
+  padding: 18px 16px;
+  border: none;
+  border-radius: 12px;
+  background: #f1f1f1;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form__field:focus {
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(71, 178, 228, 0.2);
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+/* Floating label */
+.form__label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.form__field:focus ~ .form__label,
+.form__field:not(:placeholder-shown) ~ .form__label {
+  top: -10px;
+  left: 14px;
+  background-color: #f8f8f8;
+  padding: 0 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ba8e0b;
+}
+
+/* Button Style */
+.register {
+  background: #af3065;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px 35px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.register:hover {
+  background: #d8208e;
+  transform: translateY(-2px);
+}
+
+/* Links */
+.create-account-link,
+.forgot-password-link {
+  color: #af3065;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.create-account-link:hover,
+.forgot-password-link:hover {
+  color: #d8208e;
+}
+
+/* Image Styling */
+.photo img {
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  animation: floating 2s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  #login {
+    padding: 60px 0;
+  }
+
+  .col-lg-5 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .register {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,57 @@
+ <!-- ======= Hero Section ======= -->
+ <section id="hero" class="d-flex align-items-center" data-aos="fade-up">
+    <img src="assets/img/hackerspaces.png" class="img-fluid" alt="" width="100%">
+      </section><!-- End Hero -->
+
+
+        <!-- ======= Hackerspace Section ======= -->
+        <section id="Hackerspace" class="Hackerspace mt-5">
+          <div class="container" data-aos="fade-up">
+            <div class="section-title mb-5 text-center">
+              <h2>{{region}} Hackerspace</h2>
+              <h5>commence une super aventure avec nous ! On a hâte de te rencontrer !"</h5>
+            </div>
+            <div class="row" style="width: 100%;">
+
+              <div class="col-12 col-lg-12 col-xl-12 col-md-12" style="width: 100%;">
+                <div class="info d-flex justify-content-evenly">
+
+                  <div class="address">
+                    <i class="bi bi-geo-alt"></i>
+                    <h4>Location:</h4>
+                    <p>{{adresse}}</p>
+                  </div>
+
+                  <div class="email">
+                    <i class="bi bi-envelope"></i>
+                    <h4>Email:</h4>
+                    <p>{{email}}</p>
+                  </div>
+
+                  <div class="phone">
+                    <i class="bi bi-phone"></i>
+                    <h4>Call:</h4>
+                    <p>{{phone}}</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-lg-7  mt-lg-0 d-flex align-items-stretch">
+                <iframe class="shadow" [src]="location" width="700" height="400" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div> -->
+
+            </div>
+            <div class="section-title mt-5 p-5 text-center">
+              <h2>Une vue magnifique </h2>
+              <h5>
+                {{description}}
+                </h5>
+            </div>
+            <div class="row">
+              <img [src]="photo | safe: 'url'"
+              class="img-fluid mb-4" style="border-radius: 20px;" alt="" style="height: 500px !important;">
+            </div>
+            </div>
+        </section>
+        <app-form-section></app-form-section>
+

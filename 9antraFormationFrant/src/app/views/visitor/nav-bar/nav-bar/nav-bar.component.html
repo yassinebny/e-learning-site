@@ -1,0 +1,332 @@
+<header id="header" class="fixed-top" #navbar>
+  <div class="">
+    <nav class="navbar navbar-expand-xl d-xl-none">
+      <div class="container-fluid d-flex justify-content-between">
+        <a routerLink="" class="navbar-brand text-center"><img src="assets/img/9antrakids.png" class="img-fluid" alt=""></a>
+        <div class="btns d-flex">
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse1">
+            <span><img src="assets/img/menu.png" class="w-10" alt=""></span>
+          </button>
+          <app-notification class="d-block d-xl-none mt-2"></app-notification>
+        </div>
+        <div class="collapse navbar-collapse justify-content-between flex-row-reverse" id="navbarCollapse1">
+          <ul class="navbar-nav">
+            <li><a class="nav-link" (click)="scrollToTop()" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" data-bs-toggle="collapse" data-bs-target="#navbarCollapse1" routerLink="">Home</a></li>
+            <li class="nav-item dropdown">
+              <a href="#" data-bs-auto-close="outside" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Training</a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let o of tabCategorie">
+                  <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" (click)="getFormationByCategorie(o.id)">{{o.nomCate}}</a>
+                  <ul class="dropdown-menu">
+                    <li *ngFor="let x of tabFormation" [id]="x.id">
+                      <a routerLink="training/{{x.nomFormation}}" class="dropdown-item" data-bs-toggle="collapse" data-bs-target="#navbarCollapse1" (click)="scrollToTop()">{{x.nomFormation}}</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown ">
+              <a href="#" data-bs-auto-close="outside" class="nav-link dropdown-toggle "
+                data-bs-toggle="dropdown">Hackerspace</a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let i of tabHackerSpace">
+                  <a href="#" routerLink="./hackerspace/{{i.region}}" class="dropdown-item"
+                  class="dropdown-item" [routerLinkActive]="'active'" routerLink="paths" data-bs-toggle="dropdown" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                  (click)="scrollToTop()"
+                  >{{i.region}}</a>
+                </li>
+
+              </ul>
+            </li>
+            <li><a
+              *ngIf="userLoggedIn" class="nav-link" [routerLinkActive]="'active'" routerLink="online"
+              data-bs-toggle="collapse" data-bs-target="#navbarCollapse" (click)="scrollToTop()">Online courses</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a href="#" data-bs-auto-close="outside" class="nav-link dropdown-toggle "
+                data-bs-toggle="dropdown">E-learning</a>
+              <ul class="dropdown-menu">
+                <li >
+                    <a class="dropdown-item" [routerLinkActive]="'active'" routerLink="paths" data-bs-toggle="dropdown" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" (click)="scrollToTop()">Paths</a>
+                    <a class="dropdown-item" [routerLinkActive]="'active'" routerLink="events" data-bs-toggle="dropdown" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" (click)="scrollToTop()">Events</a>
+                    <!-- <a class="dropdown-item" [routerLinkActive]="'active'" routerLink="reports" data-bs-toggle="dropdown">Reports</a> -->
+                </li>
+              </ul>
+            </li>
+            <!-- <li><a class="nav-link" [routerLinkActive]="'active'" routerLink="paths">Paths</a></li>
+            <li><a class="nav-link" [routerLinkActive]="'active'" routerLink="events">Events</a></li> -->
+            <!-- <li><a class="nav-link" [routerLinkActive]="'active'" routerLink="contact">Contact</a></li> -->
+            <li><a class="nav-link" [routerLinkActive]="'active'" [routerLink]="['contacts', 'Contact']" (click)="scrollToTop()">Contact</a></li>
+            <!-- <li><a class="nav-link" [routerLinkActive]="'active'" routerLink="reports">Reports</a></li> -->
+            <!-- <li class="ms-5"><a class="btn get-started" href="#inscription">Get Started</a></li> -->
+          <!-- </ul> -->
+            <li>
+              <a
+                class="nav-link"
+                [routerLinkActive]="'active'"
+                routerLink="project"
+                data-bs-toggle="dropdown" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                (click)="scrollToTop()"
+                >Projects</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                data-bs-auto-close="outside"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                >Offers</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="nav-link"
+                    [routerLinkActive]="'active'"
+                    routerLink="offers"
+                    (click)="scrollToTop()"
+                    data-bs-toggle="dropdown" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    >Offers</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="nav-link"
+                    [routerLinkActive]="'active'"
+                    routerLink="company"
+                    data-bs-toggle="dropdown" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    (click)="scrollToTop()"
+                    >Company</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="ms-5" >
+              <a class="btn get-started" routerLink="signup" *ngIf="!isLoggedIn()">Get Started</a>
+              <a class="btn get-started" *ngIf="isLoggedIn()" routerLink="student" (click)="redirectToDahsboard()">Dashboard</a>
+            </li>
+            <li class="ms-3" style="margin-top: 15px;margin-right: 10px;">
+              <app-notification ></app-notification>
+            </li>
+            <!-- Inside your navbar -->
+            <li
+              class="nav-item dropdown d-flex align-items-center"
+              *ngIf="isLoggedIn()"
+            >
+            <div class="loader"></div>
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+
+                data-bs-toggle="dropdown"
+              >
+
+                <img
+                *ngIf="userImage!=null"
+                src="assets/Documents/{{ userImage }}"
+                alt="User Image"
+                class="user-image-nav rounded-circle"
+              />
+              <img
+                *ngIf="userImage==null"
+                src="assets/img/trainers/trainer-1.jpg"
+                alt="User Image"
+                class="user-image-nav rounded-circle"
+              />
+                <!-- <span class="user-name"
+                  >{{ user?.firstName }} {{ user?.lastName }}</span
+                > -->
+              </a>
+              <div class="dropdown-menu dropdown-menu-end user-menu">
+                <div class="user-info">
+                  <ng-template *ngIf="user?.image !=null">
+                    <img
+                    src="assets/Documents/{{ user?.image }}"
+                    alt="User Image"
+                    class="user-image rounded-circle"
+                  />
+                  </ng-template>
+
+                  <div class="user-details">
+                    <p class="user-name">
+                      <a (click)="redirectToDahsboard()" >{{ user?.firstName }} {{ user?.lastName }}</a>
+                    </p>
+                    <p class="user-email">
+                      <a (click)="redirectToDahsboard()"> {{ user?.username }} </a>
+                    </p>
+                  </div>
+                </div>
+                <a class="dropdown-item disconnect-button" (click)="logout()">
+                  Disconnect
+                </a>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg d-none d-xl-block">
+      <div class="container-fluid">
+        <a routerLink="" class="navbar-brand"><img src="assets/img/9antrakids.png" class="img-fluid" alt=""></a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
+          <span><img src="assets/img/menu.png" class="w-10" alt=""></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between flex-row-reverse" id="navbarCollapse2">
+          <ul class="navbar-nav">
+            <li><a class="nav-link" (click)="scrollToTop()" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="">Home</a></li>
+            <li class="nav-item dropdown">
+              <a data-bs-auto-close="outside" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Training</a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let o of tabCategorie">
+                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" (click)="getFormationByCategorie(o.id)">{{o.nomCate}}</a>
+                  <ul class="dropdown-menu">
+                    <li *ngFor="let x of tabFormation" [id]="x.id">
+                      <a routerLink="training/{{x.nomFormation}}" (click)="scrollToTop()" class="dropdown-item">{{x.nomFormation}}</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown ">
+              <a  data-bs-auto-close="outside" class="nav-link dropdown-toggle "
+                data-bs-toggle="dropdown">Hackerspace</a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let i of tabHackerSpace">
+                  <a (click)="scrollToTop()" routerLink="./hackerspace/{{i.region}}" class="dropdown-item"
+                  class="dropdown-item" [routerLinkActive]="'active'" routerLink="paths"
+                  >{{i.region}}</a>
+                </li>
+
+              </ul>
+            </li>
+            <li><a
+              *ngIf="userLoggedIn" class="nav-link" [routerLinkActive]="'active'" routerLink="online"
+              data-bs-toggle="collapse" data-bs-target="#navbarCollapse" (click)="scrollToTop()">Online courses</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a  data-bs-auto-close="outside" class="nav-link dropdown-toggle "
+                data-bs-toggle="dropdown">E-learning</a>
+              <ul class="dropdown-menu">
+                <li >
+                    <a class="dropdown-item" [routerLinkActive]="'active'" routerLink="paths" (click)="scrollToTop()">Paths</a>
+                    <a class="dropdown-item" [routerLinkActive]="'active'" routerLink="events" (click)="scrollToTop()">Events</a>
+                    <!-- <a class="dropdown-item" [routerLinkActive]="'active'" routerLink="reports" data-bs-toggle="dropdown">Reports</a> -->
+                </li>
+              </ul>
+            </li>
+            <!-- <li><a class="nav-link" [routerLinkActive]="'active'" routerLink="paths">Paths</a></li>
+            <li><a class="nav-link" [routerLinkActive]="'active'" routerLink="events">Events</a></li> -->
+            <!-- <li><a class="nav-link" [routerLinkActive]="'active'" routerLink="contact">Contact</a></li> -->
+            <li><a class="nav-link" [routerLinkActive]="'active'" [routerLink]="['contacts', 'Contact']" (click)="scrollToTop()">Contact</a></li>
+            <!-- <li><a class="nav-link" [routerLinkActive]="'active'" routerLink="reports">Reports</a></li> -->
+            <!-- <li class="ms-5"><a class="btn get-started" href="#inscription">Get Started</a></li> -->
+          <!-- </ul> -->
+            <li>
+              <a
+                class="nav-link"
+                (click)="scrollToTop()"
+                [routerLinkActive]="'active'"
+                routerLink="project"
+                data-bs-toggle="dropdown"
+                >Projects</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+
+                data-bs-auto-close="outside"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+
+                >Offers</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="nav-link"
+                    [routerLinkActive]="'active'"
+                    routerLink="offers"
+                    (click)="scrollToTop()"
+                    >Offers</a
+                  >
+                </li>
+                <li>
+                  <a
+                  (click)="scrollToTop()"
+                    class="nav-link"
+                    [routerLinkActive]="'active'"
+                    routerLink="company"
+
+                    >Company</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="ms-5" >
+              <a class="btn get-started" routerLink="signup" *ngIf="!isLoggedIn()">Get Started</a>
+              <a class="btn get-started" *ngIf="isLoggedIn()" routerLink="student" (click)="redirectToDahsboard()">Dashboard</a>
+            </li>
+            <li class="ms-3" style="margin-top: 15px;margin-right: 10px;">
+              <app-notification ></app-notification>
+            </li>
+            <!-- Inside your navbar -->
+            <li
+              class="nav-item dropdown d-flex align-items-center"
+              *ngIf="isLoggedIn()"
+              style="margin-bottom: -15px;"
+            >
+            <div class="loader"></div>
+              <a
+              style="padding-top: 0px;"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+
+                <img
+                *ngIf="userImage!=null"
+                src="assets/Documents/{{ userImage }}"
+                alt="User Image"
+                class="user-image-nav rounded-circle"
+              />
+              <img
+                *ngIf="userImage==null"
+                src="assets/img/trainers/trainer-1.jpg"
+                alt="User Image"
+                class="user-image-nav rounded-circle"
+              />
+                <!-- <span class="user-name"
+                  >{{ user?.firstName }} {{ user?.lastName }}</span
+                > -->
+              </a>
+              <div class="dropdown-menu dropdown-menu-end user-menu">
+                <div class="user-info">
+                  <ng-template *ngIf="user?.image !=null">
+                    <img
+                    src="assets/Documents/{{ user?.image }}"
+                    alt="User Image"
+                    class="user-image rounded-circle"
+                  />
+                  </ng-template>
+
+                  <div class="user-details">
+                    <p class="user-name">
+                      <a (click)="redirectToDahsboard()" >{{ user?.firstName }} {{ user?.lastName }}</a>
+                    </p>
+                    <p class="user-email">
+                      <a (click)="redirectToDahsboard()"> {{ user?.username }} </a>
+                    </p>
+                  </div>
+                </div>
+                <a class="dropdown-item disconnect-button" (click)="logout()">
+                  Disconnect
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,226 @@
+/*--------------------------------------------------------------
+# Base Styles
+--------------------------------------------------------------*/
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #444;
+  background-color: #f9f9f9;
+}
+
+a {
+  color: #47b2e4;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #73c5eb;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Jost", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Flags
+--------------------------------------------------------------*/
+.with-flag {
+  position: relative;
+}
+
+.flag-tunisia::before,
+.flag-algeria::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 15px;
+  background-size: cover;
+}
+
+/*--------------------------------------------------------------
+# Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #000;
+}
+
+.section-title h2::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background: #fab555;
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Buttons
+--------------------------------------------------------------*/
+.register,
+.inscription .php-email-form button[type="submit"] {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 12px 30px;
+  color: #fff;
+  background: #af3065;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(175, 48, 101, 0.3);
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.register:hover,
+.inscription .php-email-form button[type="submit"]:hover {
+  background: #d8208e;
+  transform: translateY(-2px);
+}
+
+/*--------------------------------------------------------------
+# Inscription Section
+--------------------------------------------------------------*/
+#inscription {
+  background-color: #f8f8f8;
+}
+
+@media (max-width: 991px) {
+  #inscription img {
+    width: 50%;
+  }
+
+  #inscription .photo {
+    text-align: center;
+  }
+}
+
+/*--------------------------------------------------------------
+# Form Styling
+--------------------------------------------------------------*/
+.form__group {
+  position: relative;
+  margin: 20px; /* Changement ici : avant c'était "20px 0" => ça ajoute de l'espace horizontal aussi */
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  min-width: 0; /* Pour éviter les débordements dans flexbox */
+  flex: 1; /* Assure que les champs se répartissent bien dans le conteneur */
+}
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fefefe;
+  transition: all 0.3s ease;
+  color: #595959;
+}
+
+.form__field:focus {
+  border-color: transparent;
+  box-shadow: 0 0 5px rgba(175, 48, 101, 0.4);
+  background-color: #fff;
+  outline: none;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:required:invalid {
+  border-color: #e74c3c;
+  background-color: #fff0f0;
+}
+
+/* Floating label */
+.form__label {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  color: #999;
+  font-size: 1.3rem;
+  transition: 0.25s ease;
+  pointer-events: none;
+}
+
+.form__field:focus ~ .form__label,
+.form__field:not(:placeholder-shown) ~ .form__label {
+  top: -20px;
+  font-size: 0.95rem;
+  color: #af3065;
+  font-weight: bold;
+}
+
+/* Error Message */
+.form__error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.form__error::before {
+  content: "⚠️ ";
+  margin-right: 4px;
+}
+
+/* Optional Icon in field */
+.form__icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: #af3065;
+  font-size: 18px;
+}
+
+/*--------------------------------------------------------------
+# Responsive Fields Layout
+--------------------------------------------------------------*/
+.name-fields {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+
+.name-fields .form__group {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .name-fields {
+    flex-direction: column;
+  }
+}

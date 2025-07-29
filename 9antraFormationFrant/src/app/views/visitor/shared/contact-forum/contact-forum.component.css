@@ -1,0 +1,151 @@
+
+/* 🌟 Global Styles */
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #444;
+  background: #f0f8ff;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🔹 Section Styling */
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #f3f5fa;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #000;
+}
+
+/* 🌟 Form Group Styling */
+.form__group {
+  position: relative;
+  padding: 25px 20px 0;
+  margin-top: 20px;
+  animation: slideIn 0.5s ease-out;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #d3d3d3;
+  outline: none;
+  font-size: 1.3rem;
+  color: #333;
+  padding: 15px 0;
+  background: transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:focus {
+  border-color: #AF3065;
+  box-shadow: 0 3px 15px rgba(175, 48, 101, 0.3);
+}
+
+.form__label {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.2rem;
+  color: #999;
+  transition: 0.2s ease;
+}
+
+.form__field:focus ~ .form__label,
+.form__field:not(:placeholder-shown) ~ .form__label {
+  top: -10px;
+  left: 15px;
+  font-size: 1rem;
+  color: #AF3065;
+  background-color: #fff;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+/* 🔹 Contact Button */
+.contact {
+  background: #AF3065;
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.contact:hover {
+  background: #d8208e;
+  transform: scale(1.05);
+}
+
+/* 🔹 Register Button */
+.register {
+  background-color: #AF3065;
+  color: #fff;
+  padding: 12px 34px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.register:hover {
+  background-color: #d8208e;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 💥 Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 💡 Media Query for Mobile */
+@media (max-width: 768px) {
+  .form__field {
+    padding: 12px 0;
+    font-size: 1.2rem;
+  }
+
+  .register, .contact {
+    padding: 10px 30px;
+    font-size: 1rem;
+  }
+}

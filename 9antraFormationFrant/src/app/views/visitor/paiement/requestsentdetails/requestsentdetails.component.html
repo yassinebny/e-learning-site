@@ -1,0 +1,224 @@
+
+
+<body>
+
+<!-- Vertical Scroll Container (default) -->
+<div class="scroll-container vertical">
+  <ul class="nav-list" [class.tall]="scrollPercentage >= 75" [class.taller]="scrollPercentage >= 90">
+    <li class="nav-item" (click)="inview(item1); selectStep(0)">
+      <span class="circle" [class.filled]="selectedStep === 0">
+        <span class="inner-circle" [class.filled]="selectedStep === 0">
+          <i class="bi bi-info-lg"></i>
+        </span>
+      </span>
+      <span class="step-text" [ngClass]="{ 'bigger-text': selectedStep === 0 }"></span>
+    </li>
+    <li class="nav-item">
+      <ul class="sub-nav-list">
+        <li class="nav-item" (click)="inview(item2); selectStep(2)">
+          <span class="circle" [class.filled]="selectedStep === 2">
+            <span class="inner-circle" [class.filled]="selectedStep === 2">
+              <i class="bi bi-cash-coin"></i>
+            </span>
+          </span>
+          <span class="step-text" [ngClass]="{ 'bigger-text': selectedStep === 2 }"></span>
+        </li>
+        <li class="nav-item" (click)="inview(item3); selectStep(3)">
+          <span class="circle" [class.filled]="selectedStep === 3">
+            <span class="inner-circle" [class.filled]="selectedStep === 3">
+              <i class="bi bi-credit-card-2-front-fill"></i>
+            </span>
+          </span>
+          <span class="step-text" [ngClass]="{ 'bigger-text': selectedStep === 3 }">
+            <strong></strong>
+          </span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<!-- Horizontal Scroll Container (small screens) -->
+<div class="scroll-container horizontal" >
+  <ul class="nav-list-horizontal">
+    <li class="nav-item" (click)="inview(item1); selectStep(0)">
+      <span class="circle" [class.filled]="selectedStep === 0">
+        <span class="inner-circle" [class.filled]="selectedStep === 0">
+          <i class="bi bi-info-lg"></i>
+        </span>
+      </span>
+      <span class="step-text" [ngClass]="{ 'bigger-text': selectedStep === 0 }"></span>
+    </li>
+    <li class="nav-item" (click)="inview(item2); selectStep(2)">
+      <span class="circle" [class.filled]="selectedStep === 2">
+        <span class="inner-circle" [class.filled]="selectedStep === 2">
+          <i class="bi bi-cash-coin"></i>
+        </span>
+      </span>
+      <span class="step-text" [ngClass]="{ 'bigger-text': selectedStep === 2 }"></span>
+    </li>
+    <li class="nav-item" (click)="inview(item3); selectStep(3)">
+      <span class="circle" [class.filled]="selectedStep === 3">
+        <span class="inner-circle" [class.filled]="selectedStep === 3">
+          <i class="bi bi-credit-card-2-front-fill"></i>
+        </span>
+      </span>
+      <span class="step-text" [ngClass]="{ 'bigger-text': selectedStep === 3 }">
+        <strong></strong>
+      </span>
+    </li>
+  </ul>
+</div>
+
+
+<div class="section-title">
+  <h2   #item1   id="item1" class="section">Your Selected Training</h2>
+  <h1> Step 1: Click to read Training Details</h1>
+</div>
+
+<div *ngIf="userformation?.length == 0" class="text-center mt-3 d-flex justify-content-center">
+  <div class="nodata">
+    <p style="overflow: hidden;">Your choosed training is still not available.</p>
+  </div>
+</div>
+
+
+
+<div class="container">
+
+
+  <div class="box" *ngFor="let formation of userformation; let i = index" (click)="toggleBox('box' + 100)" [class.clicked]="isClicked('box' + 100)" [class.blur]="isSiblingClicked('box' + 100)" [id]="'box' + 100">
+    <div class="flip-card-back">
+      <img *ngIf="clickedBox !== 'box' + 100" [class]="getImageClass(formation.categorie.nomCate)" [src]="getImageUrl(formation.categorie.nomCate)">
+
+      <div class="box-text-container">
+          <span class="box-text1" *ngIf="clickedBox !== 'box' + 100">
+            <strong>Read <span style="color:#AF3065">More</span> about <span style="color:#AF3065">{{formation.nomFormation}}</span></strong>
+          </span>
+        <span class="box-text" *ngIf="clickedBox === 'box' + 100">
+            {{formation.description}}
+          </span>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div style=" display: flex;
+  justify-content: center;
+  margin-top: 20px;">
+  <button (click)="showothertraining = !showothertraining"
+
+  style=" background-color: #af3065; /* Green background */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;"
+
+  >
+    {{ showothertraining ? 'Show less' : 'Show more trainings' }}
+  </button>
+</div>
+<br><br>
+<div class="section-title"  *ngIf="showothertraining">
+  <h2>Our other trainings</h2>
+  <h1>Click on it for more details!</h1>
+</div>
+<div class="boxes"  *ngIf="showothertraining">
+<div class="container" >
+
+
+
+
+
+  <div class="box" *ngFor="let formation of pagedFormations; let i = index" (click)="toggleBox('box' + i)" [class.clicked]="isClicked('box' + i)" [class.blur]="isSiblingClicked('box' + i)" [id]="'box' + i">
+    <div class="flip-card-back">
+      <img   *ngIf="clickedBox !== 'box' + i" [class]="getImageClass(formation.categorie.nomCate)" [src]="getImageUrl(formation.categorie.nomCate)">
+
+      <div class="box-text-container">
+      <span class="box-text1" *ngIf="clickedBox !== 'box' + i">
+        <strong>Read <span style="color:#AF3065">More</span> about <span style="color:#AF3065">{{formation.nomFormation}}</span></strong>
+      </span>
+        <span class="box-text" *ngIf="clickedBox === 'box' + i">
+        {{formation.description}}
+      </span>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div *ngIf="formations?.length == 0" class="text-center mt-3 d-flex justify-content-center">
+    <div class="nodata">
+      <p style="overflow: hidden;">There are no trainings available.</p>
+    </div>
+  </div>
+  </div>
+
+  <div class="pagination-container">
+    <button class="pagination-button" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button class="pagination-button" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+<br><br>
+</div>
+
+
+<br><br>
+<div  #item2  id="item2" class="section" class="section-title">
+  <h2  >Our Payment methods</h2>
+  <h1>  Step 2 (option 1): Onsite methods(Move your mouse on the picture for details)</h1>
+</div>
+<div class="container">
+<figure class="snip1577">
+  <img src="assets/img/PaymentD17.png" alt="sample99" />
+  <figcaption>
+    <h1><strong> card number:1452987635216526</strong>
+    </h1>
+    <h4>D17</h4>
+  </figcaption>
+
+</figure>
+<figure class="snip1577 "   >
+  <img  src="assets/img/post.jpg" alt="sample109" />
+  <figcaption>
+    <h1><strong> card number:1452987635216526</strong>
+    </h1>
+    <h4>Mandat Minute</h4>
+  </figcaption>
+
+</figure>
+<figure class="snip1577"><img src="assets/img/PaymentBank.png" alt="sample117" />
+  <figcaption>
+    <h1><strong> card number:1452987635216526</strong>
+    </h1>
+    <h4>Bank Transfer</h4>
+  </figcaption>
+</figure>
+</div>
+<br><br>
+<div     #item3   id="item3" class="section" class="section-title">
+  <h2 >Step 2 (option 2): Online payment(Click to proceed to payment)</h2>
+
+  <h1>Move your mouse on the picture for details</h1>
+</div>
+<div class="container">
+<figure class="snip1577" (click)="navigateToPayment()"><img src="assets/img/PaymentFlouci.png" alt="sample117" />
+  <figcaption>
+    <h1><strong> Check the link in the email</strong>
+    </h1>
+
+  </figcaption>
+</figure>
+</div>
+<br><br><br><br>
+
+</body>

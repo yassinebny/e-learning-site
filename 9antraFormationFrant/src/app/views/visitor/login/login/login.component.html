@@ -1,0 +1,166 @@
+<!--<section
+  id="login"
+  class="login"
+  style="margin-top: 130px; margin-bottom: 100px"
+>
+  <div class="container">
+    <div class="row justify-content-between">
+      <div
+        class="col-lg-5 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <h1 class="text-center">Login to Your Account</h1>
+
+
+        <form
+          action=""
+          method="post"
+          #loginForm="ngForm"
+          (ngSubmit)="login(loginForm)"
+          role="form"
+          class="php-email-form"
+        >
+          <div *ngIf="isLoading" class="loader"></div>
+
+          <div class="form__group field">
+            <input
+              ngModel
+              type="input"
+              name="username"
+              id="name"
+              class="form__field"
+              placeholder="email"
+              [(ngModel)]="email"
+              required
+            />
+            <label for="name" class="form__label">Email</label>
+          </div>
+
+          <!-- Display error message for invalid email -
+          <div class="mt-2 text-center" *ngIf="email && !isValidEmail(email)">
+            <p class="text-danger">Invalid email address</p>
+          </div>
+
+          <div class="form__group field">
+            <input
+              ngModel
+              name="password"
+              type="password"
+              class="form__field"
+              placeholder="Password"
+              id="name"
+              required
+            />
+            <label for="name" class="form__label">Password</label>
+          </div>
+          <div class="mt-5 text-center">
+            <button class="register btn col-lg-5 mt-2" type="submit">
+              Login
+            </button>
+          </div>
+          <div class="mt-5 text-center">
+            <a routerLink="/signup" class="col-lg-5 mt-2">
+              <h5>Create an account</h5>
+            </a>
+          </div>
+          <div class="mt-1 text-center">
+            <a routerLink="/forgotpassword" class="col-lg-5 mt-2">
+              <h5>Forgot password ?</h5>
+            </a>
+          </div>
+        </form>
+      </div>
+      <div
+        class="col-lg-5 order-1 order-lg-2 photo"
+        data-aos="zoom-in"
+        data-aos-delay="200"
+      >
+        <img src="assets/img/login.png" class="img-fluid animated" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Login
+  -->
+
+  <section id="login" class="login" style="margin-top: 130px; margin-bottom: 100px;">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <!-- Left Column - Form Section -->
+        <div class="col-lg-6 col-md-8 col-sm-10">
+          <div class="form-container">
+            <h1 class="text-center mb-4">Login to Your Account</h1>
+  
+            <form
+              action=""
+              method="post"
+              #loginForm="ngForm"
+              (ngSubmit)="login(loginForm)"
+              role="form"
+              class="php-email-form"
+            >
+              <!-- Loader -->
+              <div *ngIf="isLoading" class="loader"></div>
+  
+              <!-- Email Input -->
+              <div class="form__group">
+                <input
+                  type="email"
+                  name="username"
+                  id="email"
+                  class="form__field"
+                  placeholder="Email"
+                  [(ngModel)]="email"
+                  required
+                />
+                <label for="email" class="form__label">Email</label>
+              </div>
+  
+              <!-- Error Message for Invalid Email -->
+              <div *ngIf="email && !isValidEmail(email)" class="text-center mt-2">
+                <p class="text-danger">Invalid email address</p>
+              </div>
+  
+              <!-- Password Input -->
+              <div class="form__group">
+                <input
+                  name="password"
+                  type="password"
+                  id="password"
+                  class="form__field"
+                  placeholder="Password"
+                  ngModel
+                  required
+                />
+                <label for="password" class="form__label">Password</label>
+              </div>
+  
+              <!-- Login Button -->
+              <div class="mt-4 text-center">
+                <button class="register btn col-lg-5 mt-2" type="submit">Login</button>
+              </div>
+  
+              <!-- Links -->
+              <div class="mt-4 text-center">
+                <a routerLink="/signup" class="create-account-link">
+                  <h5>Create an account</h5>
+                </a>
+              </div>
+              <div class="mt-1 text-center">
+                <a routerLink="/forgotpassword" class="forgot-password-link">
+                  <h5>Forgot password?</h5>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+  
+        <!-- Right Column - Image Section -->
+        <div class="col-lg-6 col-md-4 d-none d-lg-block photo">
+          <img src="assets/img/Mobile login-cuate.png" class="img-fluid animated" alt="Login Image" />
+        </div>
+      </div>
+    </div>
+  </section>
+  

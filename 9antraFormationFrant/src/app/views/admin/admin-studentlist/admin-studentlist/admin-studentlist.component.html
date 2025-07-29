@@ -1,0 +1,303 @@
+<main class="pt-4">
+  <div style="margin-bottom: 50px" class="d-block d-lg-none"></div>
+  <div class="row justify-content-between">
+    <div class="col-8">
+      <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <div class="col-4 d-flex align-items-center justify-content-end">
+      <button
+        type="button"
+        class="btn filter p-2 border pe-3 me-3"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
+        <i class="bi bi-filter-square fa-2xl me-3"></i> Filter
+      </button>
+
+      <button
+        type="button"
+        class="btn register p-2 border pe-3"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop1"
+      >
+        <i class="bi bi-plus fa-2xl me-3"></i> Create
+      </button>
+
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title"
+                id="staticBackdropLabel"
+                style="color: #af3065; font-weight: bold"
+              >
+                Filter
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form action="">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-8 form__group field mt-3">
+                    <label class="mb-3 form__label">Status</label>
+                    <select
+                      name="status"
+                      [(ngModel)]="status"
+                      id="id_select"
+                      autofocus="true"
+                      class="form__field mt-2"
+                    >
+                      <option value="Status" disabled selected>Status</option>
+                      <option value="1">Ativated</option>
+                      <option value="0">Disabled</option>
+
+                    </select>
+                  </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                  <div class="col-8 form__group field mt-5 mb-3">
+                    <label class="mb-3 form__label">Training</label>
+                    <select
+                      name="Formation"
+                      [(ngModel)]="Formation"
+                      id="id_select"
+                      autofocus="true"
+                      class="form__field mt-2"
+                    >
+                      <option value="1" disabled selected>Training</option>
+                      <option
+                        *ngFor="let o of tabFormation"
+                        value="{{ o.nomFormation }}"
+                      >
+                        {{ o.nomFormation }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="submit"
+                (click)="reset()"
+                style="background-color: rgb(235, 235, 238);color: black;"
+                class="btn register">
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                (click)="getfilts()"
+                class="btn register"
+              >
+                Filter
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="staticBackdrop1"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title"
+                id="staticBackdropLabel"
+                style="color: #af3065; font-weight: bold"
+              >
+                New Groupe
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form action="">
+                <div class="row">
+                  <div
+                    class="col-6 d-flex justify-content-center align-items-center"
+                  >
+                    <img
+                      src="assets/img/3d-casual-life-robot-smile.png"
+                      class="w-75"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-6">
+                    <div class="row text-center">
+                      <div class="form__group field mt-3">
+                        <label class="mb-3 form__label">Training</label>
+                        <select
+                          name="Formation="
+                          [(ngModel)]="Formation"
+                          id="id_select"
+                          autofocus="true"
+                          class="form__field"
+                        >
+                          <option value="1" disabled selected>Training</option>
+                          <option
+                            *ngFor="let o of tabFormation"
+                            value="{{ o.nomFormation }}"
+                          >
+                            {{ o.nomFormation }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row text-center">
+                      <div class="form__group field mt-5">
+                        <input
+                          type="input"
+                          class="form__field"
+                          placeholder="Groupe name"
+                          name="Phone"
+                          id="phone"
+                          required
+                        />
+                        <label for="Phone" class="form__label"
+                          >Groupe Name</label
+                        >
+                      </div>
+                    </div>
+
+                    <div class="row text-center">
+                      <div class="form__group field mt-4 mb-3">
+                        <label class="mb-3 form__label">Coach</label>
+                        <select
+                          id="id_select"
+                          autofocus="true"
+                          class="form__field"
+                        >
+                          <option value="1" disabled selected>Coach</option>
+                          <option value="2">Option2</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                type="submit"
+                class="btn register"
+              >
+                Create
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="data_table card1 mt-4" style="overflow-y: scroll; height: 600px">
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th></th>
+
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Date</th>
+          <th>Type Formation</th>
+          <th>status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let x of tabStudent">
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="Check[]"
+                value="{{ x.id }}"
+                id="flexCheckDefault"
+              />
+            </div>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <img
+                src="/assets/Documents/{{ x.image }}"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+              />
+              <a routerLink="profile/{{ x.id }}">
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{ x.firstName }} {{ x.lastName }}</p>
+                  <p class="text-muted mb-0">{{ x.username }}</p>
+                </div>
+              </a>
+            </div>
+          </td>
+          <td>
+            <p class="text-muted mb-0">{{ x.numeroTel }}</p>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{ x.createdAt | date }}</p>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{ x.typeFormation }}</p>
+          </td>
+          <td *ngIf="x.enabled == 0">
+            <button class="unpaid btn-rounded btn-sm">Unpaid</button>
+          </td>
+          <td *ngIf="x.enabled == 1">
+            <button class="paid btn-rounded btn-sm">Paid</button>
+          </td>
+          <td *ngIf="x.enabled == 2">
+            <button class="pending btn-rounded btn-sm">Pending</button>
+          </td>
+          <td *ngIf="x.enabled == 3">
+            <button class="canceled btn-rounded btn-sm">Canceled</button>
+          </td>
+        </tr>
+        <tr *ngIf="tabStudent.length == 0">
+          <td colspan="6" class="text-center">No Students  found </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

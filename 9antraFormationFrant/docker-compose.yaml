@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  frontend:
+    image: e-9antra_kids-frontend:1.0.0
+    container_name: e-9antra_frontend
+    ports:
+      - "4200:80"
+    networks:
+      - my_network
+    depends_on:
+      - backend
+
+  backend:
+    image: e-9antra_kids-backend:1.0.0
+    container_name: e-9antra_backend
+    ports:
+      - "8094:8094"
+    networks:
+      - my_network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/demopfe
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demopfe
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - my_network
+
+volumes:
+  mysql_data:
+
+networks:
+  my_network:
+    driver: bridge

@@ -1,0 +1,308 @@
+/*.container {
+    max-width: 960px; /* Set the desired maximum width for the container *
+  }
+  
+
+.RepeaterPayment {
+    margin-bottom: 30px;
+}
+
+.RepeaterPayment a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    padding: 30px;
+    border: 3px solid #d5d5d5;
+    background: transparent;
+    border-radius: 12px;
+    transition: .3s;
+}
+
+.RepeaterPayment a:hover {
+    background-color: #f9f5ed;
+    /* color: #f9f5ed; *
+    border-color: #fab555;
+}
+
+.TitlePayMethode {
+    color: #3e3333;
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+  /* Make the columns stack on smaller screens *
+  @media (max-width: 767px) {
+    .col-xs-12 {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+
+    .PaymentContactImage {
+      display: none;
+    }
+  }
+*/
+
+/* === CONTAINER === */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  text-align: center;
+  background: linear-gradient(135deg, #FFB6B9, #FF8C94); /* Soft gradient for warmth */
+  border-radius: 25px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1); /* Large shadow for a soft 3D effect */
+}
+
+/* === TOP SECTION TEXT === */
+.container h1 {
+  font-size: 3.5em;
+  color: #FF4081; /* Bright playful pink */
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 5px 5px 12px rgba(0, 0, 0, 0.15); /* Bright shadow for emphasis */
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.container h2 {
+  font-size: 2.3em;
+  color: #F386A1; /* Soft pinkish hue */
+  font-weight: 600;
+  margin-bottom: 25px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1); /* Light shadow for a soft touch */
+  letter-spacing: 2px;
+  line-height: 1.4;
+}
+
+/* === BUTTON TOP SECTION === */
+.container .btn-top {
+  font-size: 1.7em;
+  padding: 20px 50px;
+  background-color: #FF61A6; /* Bright pink */
+  color: white;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Fun shadow to make it pop */
+}
+
+.container .btn-top:hover {
+  background-color: #FF4081; /* Darker pink on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* === ICONS IN TOP SECTION === */
+.container .header-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.container .header-icons i {
+  font-size: 4em;
+  color: #FF61A6; /* Bright color for icons */
+  transition: all 0.3s ease;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.container .header-icons i:hover {
+  color: #FF4081; /* Hover color change */
+  transform: scale(1.1); /* Interactive hover effect */
+}
+
+/* === REPEATER PAYMENT === */
+.RepeaterPayment {
+  margin-bottom: 30px;
+}
+
+.RepeaterPayment a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  padding: 40px;
+  background-color: #FCE4EC; /* Light pink background */
+  border: 3px solid #FF8A80; /* Soft border */
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #FF3366; /* Playful red */
+  font-size: 18px;
+  text-align: center;
+}
+
+.RepeaterPayment a:hover {
+  background-color: #FFEBEE; /* Lighter pink on hover */
+  border-color: #FF4081; /* Bright pink border */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.RepeaterPayment a .TitlePayMethode {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* === BUTTON STYLING === */
+.RepeaterPayment a .btn {
+  padding: 12px 30px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 600;
+  color: #FFF;
+  background-color: #FF4081; /* Bright pink button */
+  border: none;
+  border-radius: 30px;
+  margin-top: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.RepeaterPayment a .btn:hover {
+  background-color: #FF3366; /* Darker pink on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* === RESPONSIVENESS === */
+@media (max-width: 767px) {
+  .col-xs-12 {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .RepeaterPayment a {
+    padding: 25px;
+    font-size: 16px; /* Adjust font size for mobile */
+  }
+
+  .RepeaterPayment a .TitlePayMethode {
+    font-size: 20px; /* Adjust title font size */
+  }
+
+  .RepeaterPayment a .btn {
+    padding: 10px 25px;
+    font-size: 14px; /* Adjust button font size */
+  }
+
+  /* === TOP SECTION ON MOBILE === */
+  .container {
+    padding: 40px 20px;
+  }
+
+  .container h1 {
+    font-size: 2.8em;
+  }
+
+  .container h2 {
+    font-size: 2em;
+  }
+
+  .container .btn-top {
+    font-size: 1.5em;
+    padding: 15px 40px;
+  }
+
+  .container .header-icons {
+    gap: 20px;
+  }
+
+  .container .header-icons i {
+    font-size: 3.5em;
+  }
+}
+
+/* === ICONS & BUTTONS === */
+.icon {
+  font-size: 2.5em;
+  color: #FF4081; /* Bright pink */
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #FF3366; /* Darker pink on hover */
+}
+
+/* === KID-FRIENDLY COLORS === */
+.kid-friendly-container {
+  background-color: #FFEE58; /* Fun yellow background */
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.kid-friendly-container h2 {
+  font-size: 2.2em;
+  color: #FF4081; /* Bright pink for headers */
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.kid-friendly-container p {
+  font-size: 1.4em;
+  color: #333; /* Dark text for readability */
+}
+
+.kid-friendly-container .btn {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 12px 36px;
+  border-radius: 30px;
+  background: #FF4081; /* Bright pink button */
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.kid-friendly-container .btn:hover {
+  background: #FF3366; /* Darker pink on hover */
+  transform: scale(1.05);
+}
+
+/* === KID-FRIENDLY TEXT === */
+.kid-text {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 1.6em;
+  color: #FF4081; /* Fun pink text */
+}
+
+.kid-text-small {
+  font-size: 1.2em;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* === RESPONSIVE IMAGE === */
+.PaymentContactImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.pink-section {
+  background: linear-gradient(135deg, #FFB6B9, #FF8C94); /* Conserve le dégradé */
+}
+
+.white-section .container {
+  background: #fff; /* Fond blanc pour les autres sections */
+}
+/* Pink section background */
+.pink-section {
+  background-color: #AF2F64;
+}
+
+/* White background for sections */
+.white-section {
+  background-color: white;
+}

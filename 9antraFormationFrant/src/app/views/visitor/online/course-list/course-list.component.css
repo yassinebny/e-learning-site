@@ -1,0 +1,112 @@
+/*a {
+    color: #01130b;
+    text-decoration: none;
+
+  }
+
+  a:hover {
+    color: #AF3065;
+    text-decoration: none;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  } 
+
+   .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+}
+
+*/
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body Background */
+body {
+  background: linear-gradient(135deg, #f9f9f9, #e0eafc);
+  padding: 2rem;
+}
+
+/* Links */
+a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #d72638;
+}
+
+/* Grid Layout */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* GLASSY CARD STYLE */
+.card {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2rem;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Content */
+.card h3 {
+  font-size: 1.6rem;
+  color: #1c1c1c;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+/* Button */
+.card .btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.card .btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  box-shadow: 0 6px 20px rgba(255, 120, 165, 0.5);
+}
+
+

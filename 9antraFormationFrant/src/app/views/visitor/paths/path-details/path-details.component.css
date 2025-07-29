@@ -1,0 +1,295 @@
+/*.cface > .face2 {
+    display: none;
+  }
+  
+  .cface:hover > .face1 {
+    display: none;
+  }
+  
+  .cface:hover > .face2 {
+    display: block;
+  }
+  
+  .cface {
+    cursor: pointer;
+  }
+
+  .register, .later, .touch {
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 28px 11px 28px;
+    transition: 0.5s;
+    margin: 10px 0 0 0;
+  }
+  
+  .register {
+    color: #fff;
+    background: #AF3065;
+    border: none;
+  }
+  
+  .later {
+    color: #AF3065;
+    background: #fff;
+    border: 2px solid #AF3065;
+  }
+
+  .touch {
+    color: #fff;
+    background: #fab555;
+    border: 2px solid #fff;
+  }
+  
+  /* Add this rule for both classes 
+  .register, .later, .touch {
+    box-sizing: border-box;
+  }
+  
+  .register:hover {
+    color: #fff;
+    background: #d8208e;
+  }
+  
+  .later:hover {
+    color: #fff;
+    background: #fab555;
+    border: 2px solid #AF3065;
+  }
+
+  .touch:hover {
+    color: #fff;
+    background: #AF3065;
+  }
+
+  .pay-image {
+    width: 90%;
+  }
+
+  .breadcumbs {
+    margin-left: 15em;
+  }
+
+  .breadcumbs a {
+    font-size: 1.2em;
+    color: #af2f64;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+  /* .breadcrumbs {
+    min-height: 40px;
+    color: #af2f64;
+    font-size: 25px;
+    margin-left: 50px;
+  } */
+
+  /* .breadcrumbs a {
+    color: #af2f64 !important;
+  } 
+
+  @media (max-width: 768px) {
+    .card-padding {
+      padding: 25px;
+    }
+
+    .image-margin {
+      margin-top: 1.5em;
+    }
+
+    .breadcumbs {
+      margin-top: 2em;;
+      margin-left: 1em;
+    }
+  }
+
+  */
+  /* === FACE INTERACTION === */
+.cface > .face2 {
+  display: none;
+}
+
+.cface:hover > .face1 {
+  display: none;
+}
+
+.cface:hover > .face2 {
+  display: block;
+}
+
+.cface {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cface:hover {
+  transform: scale(1.1); /* Slight zoom effect when hovered */
+}
+
+/* === BUTTON STYLING === */
+.register, .later, .touch {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 14px 36px;
+  margin: 15px 0 0 0;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.register {
+  color: #fff;
+  background: #FF66B2; /* Playful pink */
+  border: none;
+}
+
+.later {
+  color: #FF66B2;
+  background: #fff;
+  border: 2px solid #FF66B2;
+}
+
+.touch {
+  color: #fff;
+  background: #FFDD00; /* Bright yellow */
+  border: 2px solid #fff;
+}
+
+.register:hover {
+  color: #fff;
+  background: #FF3385; /* Slight darker shade on hover */
+  transform: scale(1.05);
+}
+
+.later:hover {
+  color: #fff;
+  background: #FFDD00;
+  border: 2px solid #FF66B2;
+  transform: scale(1.05);
+}
+
+.touch:hover {
+  color: #fff;
+  background: #FF66B2;
+  transform: scale(1.05);
+}
+
+/* === IMAGE STYLING === */
+.pay-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pay-image:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* === BREADCRUMBS === */
+.breadcumbs {
+  display: flex;
+  align-items: center;
+  font-size: 1.3em;
+  margin-left: 10em;
+  color: #FF66B2;
+}
+
+.breadcumbs a {
+  color: #FF66B2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+.breadcumbs a:hover {
+  color: #FF3385;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* === KID-FRIENDLY STYLING === */
+.kid-friendly-container {
+  background: linear-gradient(to right, #FEE2E2, #FFDD00); /* Fun and soft gradient */
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.kid-friendly-container h2 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #FF66B2;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.kid-friendly-container p {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #FF66B2;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.kid-friendly-container .btn {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px 36px;
+  border-radius: 30px;
+  background: #FF66B2;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.kid-friendly-container .btn:hover {
+  background: #FF3385;
+  transform: scale(1.05);
+}
+
+/* === RESPONSIVENESS === */
+@media (max-width: 768px) {
+  .breadcumbs {
+    margin-left: 1em;
+    font-size: 1.1em;
+    flex-direction: column; /* Stack breadcrumbs vertically on mobile */
+    align-items: flex-start;
+  }
+
+  .breadcumbs a {
+    font-size: 1.2em;
+  }
+
+  .pay-image {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .register, .later, .touch {
+    padding: 12px 28px;
+    font-size: 14px;
+  }
+
+  .kid-friendly-container {
+    padding: 20px;
+  }
+
+  .kid-friendly-container h2 {
+    font-size: 1.8em;
+  }
+
+  .kid-friendly-container p {
+    font-size: 1em;
+  }
+}

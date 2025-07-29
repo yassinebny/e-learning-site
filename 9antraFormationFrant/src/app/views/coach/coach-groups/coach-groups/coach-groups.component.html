@@ -1,0 +1,211 @@
+<main class="gx-5">
+  <div class="d-lg-none d-md-block"><br /><br /><br /></div>
+  <div class="pagetitle ms-3 pt-3">
+    <h1>Groups</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Groups</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <!-- Groups section -->
+  <!-- <div class="container"> -->
+
+  <!-- Groups section -->
+  <div class="container">
+    <!-- <div class="row">
+      <div class="col-lg-4 col-md-6" *ngFor="let group of groups">
+        <div class="card shadow-sm mb-4">
+          <div class="row mt-4 mx-2">
+            <div class="nav-profile d-flex align-items-center">
+              <span class="fw-bold ps-4">#{{ group.groupName }}</span>
+              <span>
+                <div class="filter">
+                  <button
+                    class="icon"
+                    data-bs-toggle="dropdown"
+                    style="border: none; background-color: #ffffff00"
+                  >
+                    <i
+                      class="bi bi-three-dots-vertical"
+                      style="margin-left: 150px"
+                    ></i>
+                  </button>
+                  <ul
+                    class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
+                  >
+                    <li class="dropdown-header text-start"></li> -->
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6" *ngFor="let group of groups">
+        <div class="card shadow-sm mb-4">
+          <div class="row mt-4 mx-2">
+            <div class="nav-profile d-flex align-items-center">
+              <span class="fw-bold ps-4">#{{ group.groupName }}</span>
+              <span>
+                <div class="filter">
+                  <button class="icon" data-bs-toggle="dropdown" style="border: none; background-color: #ffffff00">
+                    <i class="bi bi-three-dots-vertical" style="margin-left: 80px;"></i>
+                  </button>
+
+                  <button class="icon" (click)="getIdGroupe(group.id)"  data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: none; background-color: #ffffff00">
+                    <i class="bi bi-upload"></i>
+                  </button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form  [formGroup]="RecordForm">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Title</label>
+                              <input type="text" formControlName="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Title">
+                            </div>
+
+
+                            <div class="Neon Neon-theme-dragdropbox mt-4">
+                              <input (change)="onFileSelected($event)"
+                                style="z-index: 999; opacity: 0; width: 320px; height: 200px; position: absolute; right: 0px; left: 0px; margin-right: auto; margin-left: auto;"
+                                id="filer_input2" type="file">
+
+                              <div class="Neon-input-dragDrop">
+                                <div class="Neon-input-inner">
+                                  <div class="Neon-input-icon">
+                                    <i class="fa fa-file-image-o"></i>
+                                  </div>
+                                  <div class="Neon-input-text">
+                                    <h3>Drag&amp;Drop videos here</h3>
+                                  </div>
+                                  <div class="Neon-input-btn">
+
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+
+
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" (click)="AddRecordsForm()" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li class="dropdown-header text-start"></li>
+                    <li>
+                      <button class="dropdown-item" routerLink="/coach/groups/table">
+                        <span><i class="fa-regular fa-eye me-3"></i> </span>
+                        Insight
+                      </button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item mb-3" routerLink="/coach/groups/{{group.id}}/records">
+                        <span><i class="fa-regular fa-circle-play me-4"></i> </span>
+                        Records
+                      </button>
+                    </li>
+
+
+
+                  </ul>
+
+                </div>
+              </span>
+
+                      <!--  <button class="dropdown-item mb-3" routerLink="/coach/groups/{{group.id}}/records">
+                        <span><i class="fa-regular fa-circle-play me-4"></i> </span>
+                        Records
+                      </button>
+                    </li>
+                  </ul>
+                </div></span
+              > -->
+            </div>
+          </div>
+
+          <!-- <div class="card-body my-3 mx-5">
+            <div class="mb-3 align-items-center d-flex">
+              <span class="pe-4 fw-bold">Training:</span>
+              <span class="badge bg-danger">{{
+                group.formation.nomFormation
+              }}</span>
+            </div>
+            <div class="trainer-profile d-flex align-items-center mb-3">
+              <span class="pe-4 fw-bold">Members:</span>
+              <ng-container *ngIf="groups.length > 0; else noMembers">
+                <ng-container
+                  *ngFor="
+                    let studentImage of getStudentImages(group.id);
+                    let i = index
+                  "
+                >
+                  <img
+                    *ngIf="i < 3"
+                    [src]="'assets/Documents/' + studentImage"
+                    width="40px"
+                    height="40px"
+                    class="rounded-circle"
+                  />
+                </ng-container>
+              </ng-container>
+              <ng-template #noMembers>
+                <div class="trainer-profile d-flex align-items-center mb-3">
+                  <span class="pe-4 fw-bold">No members in this group.</span>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+          <div class="card-body my-3 mx-5">
+            <div class="mb-3 align-items-center d-flex">
+              <span class="pe-4 fw-bold">Training:</span>
+              <span class="badge bg-danger">{{
+                group.formation.nomFormation
+                }}</span>
+            </div>
+            <div class="trainer-profile d-flex align-items-center mb-3">
+              <span class="pe-4 fw-bold">Members:</span>
+              <ng-container *ngIf="groups.length > 0; else noMembers">
+                <ng-container *ngFor="
+                    let studentImage of getStudentImages(group.id);
+                    let i = index
+                  ">
+                  <img *ngIf="i < 3" [src]="'assets/Documents/' + studentImage" width="40px" height="40px"
+                    class="rounded-circle" />
+                </ng-container>
+              </ng-container>
+              <ng-template #noMembers>
+                <div class="trainer-profile d-flex align-items-center mb-3">
+                  <span class="pe-4 fw-bold">No members in this group.</span>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="groups?.length == 0" class="text-center mt-3 d-flex justify-content-center">
+        <div class="nodata">
+          <img src="../../../../../assets/img/nodata.png" width="250px"><br>
+          <p style="overflow: hidden;">There are no sessions available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Groups section -->
+</main>
+<!-- End #main -->

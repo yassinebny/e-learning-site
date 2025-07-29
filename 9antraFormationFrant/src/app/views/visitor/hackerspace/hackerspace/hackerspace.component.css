@@ -1,0 +1,389 @@
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/**
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Jost", sans-serif;
+}
+section {
+    padding: 60px 0;
+    overflow: hidden;
+  }
+
+  .section-bg {
+    background-color: #f3f5fa;
+  }
+
+
+
+  .section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    color: #000000;
+  }
+
+
+
+  /*--------------------------------------------------------------
+  # Hackerspace
+  --------------------------------------------------------------
+
+  .shadow{
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.226);
+
+    background: #fff;
+    border-radius: 20px;
+  }
+
+
+  .Hackerspace .info .social-links {
+  }
+
+  .Hackerspace .info .social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+    margin-right: 10px;
+  }
+
+  .Hackerspace .info .social-links a:hover {
+    background: #bae447;
+    color: #fff;
+  }
+
+  .Hackerspace .info i {
+    font-size: 20px;
+    color: #333333;
+    float: left;
+    width: 44px;
+    height: 44px;
+    background: #e7f5fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .Hackerspace .info .email:hover i,
+  .Hackerspace .info .address:hover i,
+  .Hackerspace .info .phone:hover i {
+    background: #AF3065;
+    color: #fff;
+  }
+
+  .Hackerspace  .info h4 {
+    padding: 0 0 0 60px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #0a0a0a;
+  }
+
+  .Hackerspace  .info p {
+    padding: 0 0 10px 60px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #070707;
+  }
+*/
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+nav {
+  background: linear-gradient(45deg, #ff5733, #bae447);
+  padding: 20px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #333;
+  border-radius: 30px;
+  color: #bae447;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+section {
+  padding: 80px 20px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(145deg, #f3f5fa, #ffffff);
+  border-radius: 15px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.05);
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.section-title h2 {
+  font-size: 38px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  position: relative;
+  color: #333;
+}
+
+.section-title h2:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background-color: #bae447;
+  bottom: 0;
+  left: 0;
+}
+
+.section-title h5 {
+  font-size: 18px;
+  color: #777;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/*--------------------------------------------------------------
+# Hackerspace Section
+--------------------------------------------------------------*/
+.shadow {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.shadow:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+}
+
+.Hackerspace .info .social-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.Hackerspace .info .social-links a {
+  font-size: 22px;
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 12px;
+  border-radius: 50%;
+  transition: 0.4s ease;
+  margin: 0 10px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.Hackerspace .info .social-links a:hover {
+  background: #ff5733;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+.Hackerspace .info i {
+  font-size: 24px;
+  color: #333;
+  width: 55px;
+  height: 55px;
+  background: #e7f5fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.Hackerspace .info .email:hover i,
+.Hackerspace .info .address:hover i,
+.Hackerspace .info .phone:hover i {
+  background: #AF3065;
+  color: #fff;
+}
+
+.Hackerspace .info h4 {
+  padding-left: 60px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #0a0a0a;
+}
+
+.Hackerspace .info p {
+  padding-left: 60px;
+  font-size: 16px;
+  color: #070707;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Section Titles with Borders
+--------------------------------------------------------------*/
+.section-title h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #333;
+  position: relative;
+}
+
+.section-title h2:after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background-color: #bae447;
+  bottom: 0;
+  left: 0;
+}
+
+/*--------------------------------------------------------------
+# Animations for Elements
+--------------------------------------------------------------*/
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation for Cards */
+.card {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.Hackerspace .info p {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/*--------------------------------------------------------------
+# Responsive Design
+--------------------------------------------------------------*/
+@media (max-width: 768px) {
+  section {
+    padding: 60px 10px;
+  }
+
+  .section-title h2 {
+    font-size: 30px;
+  }
+
+  .shadow {
+    padding: 15px;
+  }
+
+  .Hackerspace .info h4 {
+    font-size: 22px;
+  }
+
+  .Hackerspace .info p {
+    font-size: 14px;
+  }
+
+  .Hackerspace .info .social-links a {
+    font-size: 20px;
+    padding: 10px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav a {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .shadow {
+    padding: 12px;
+  }
+
+  .Hackerspace .info .social-links a {
+    font-size: 18px;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+  }
+}

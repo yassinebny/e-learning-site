@@ -1,0 +1,251 @@
+/*.simple-slider .swiper-slide {
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .simple-slider .swiper-button-next, .simple-slider .swiper-button-prev {
+    width: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  @media (max-width:767px) {
+    .simple-slider .swiper-button-next, .simple-slider .swiper-button-prev {
+      display: none;
+    }
+  }
+  
+  @media (max-width:767px) {
+    .simple-slider .swiper-slide {
+      height: 360px;
+    }
+  }
+
+  .register, .later {
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 28px 11px 28px;
+    transition: 0.5s;
+    margin: 10px 0 0 0;
+  }
+  
+  .register {
+    color: #fff;
+    background: #AF3065;
+    border: none;
+  }
+  
+  .later {
+    color: #AF3065;
+    background: #fff;
+    border: 1px solid #AF3065;
+  }
+  
+  /* Add this rule for both classes *
+  .register, .later {
+    box-sizing: border-box;
+  }
+  
+  .register:hover {
+    color: #fff;
+    background: #d8208e;
+  }
+  
+  .later:hover {
+    color: #fff;
+    background: #d8208e;
+  }
+*/
+
+/* === KID-FRIENDLY VIDEO SECTION === */
+
+video {
+  border: 10px solid #ff4b5c;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Ensure video is responsive */
+  height: auto;
+}
+
+/* === VIDEO TITLE CARD === */
+.card.card-color {
+  background-color: #bb0c6a;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+}
+
+.card-color .card-body {
+  padding: 20px;
+}
+
+.card-color .card-body .text-center {
+  color: #ff4b5c;
+  font-size: 26px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* === ACCORDION === */
+.accordion-button {
+  background-color: #c20962;
+  color: #333;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  font-size: 18px;
+}
+
+.accordion-button:hover {
+  background-color: #ff4b5c;
+  transform: translateY(-2px); /* Small hover effect */
+}
+
+.accordion-body {
+  background-color: #f8b400;
+  border-radius: 15px;
+  padding: 15px;
+  font-size: 16px;
+}
+
+.lesson-title a {
+  font-family: 'Comic Sans MS', cursive;
+  font-weight: bold;
+  color: #ff4b5c;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.lesson-title a:hover {
+  color: #b83b5e;
+  text-decoration: underline;
+}
+
+/* === RESPONSIVENESS === */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .card-color .card-body .text-center {
+    font-size: 22px;
+  }
+
+  .accordion-button {
+    font-size: 16px;
+  }
+
+  .lesson-title a {
+    font-size: 14px;
+  }
+}
+
+  
+/* === SLIDER STYLES === */
+.simple-slider .swiper-slide {
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.simple-slider .swiper-slide:hover {
+  transform: scale(1.02);
+}
+
+.simple-slider .swiper-button-next,
+.simple-slider .swiper-button-prev {
+  width: 45px;
+  height: 45px;
+  background-color: rgba(175, 48, 101, 0.8);
+  border-radius: 50%;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 0 15px;
+}
+
+.simple-slider .swiper-button-next:hover,
+.simple-slider .swiper-button-prev:hover {
+  background-color: #d8208e;
+  transform: scale(1.1);
+}
+
+@media (max-width: 767px) {
+  .simple-slider .swiper-button-next,
+  .simple-slider .swiper-button-prev {
+    display: none;
+  }
+
+  .simple-slider .swiper-slide {
+    height: 300px;
+  }
+}
+
+/* === BUTTON STYLES === */
+.register,
+.later {
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 10px 10px 0 0;
+  display: inline-block;
+  text-align: center;
+  min-width: 150px;
+}
+
+.register {
+  background: linear-gradient(135deg, #af3065, #d8208e);
+  color: #fff;
+}
+
+.later {
+  background: #fff;
+  color: #af3065;
+  border: 2px solid #af3065;
+}
+
+.register:hover,
+.later:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(216, 32, 142, 0.3);
+}
+
+/* Optional: Center buttons on small screens */
+@media (max-width: 575px) {
+  .register,
+  .later {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+.section-pink {
+  background-color: #AF2F64;
+}
+
+.section-white {
+  background-color: white;
+}
+
+
+
+  

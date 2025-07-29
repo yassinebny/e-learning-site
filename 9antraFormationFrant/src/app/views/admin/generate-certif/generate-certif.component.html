@@ -1,0 +1,83 @@
+<main>
+    <div class="d-lg-none d-md-block"><br><br><br></div>
+    <div class="pagetitle">
+      <h1>Add Project</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <!-- ======= Profile Section ======= -->
+    <div class="container">
+      <div class="main-body">
+        <div *ngIf="showThankYouPopup" class="popup">
+          <h2>Thank you!</h2>
+          <p>Your form has been submitted successfully.</p>
+        </div>
+            <form name="form"  #foodForm="ngForm">
+                <div class="col-md-8 container">
+                    <div class="card">
+                      <div class="card-body">
+                       <div class="form-group mb-3">
+                <div class="mb-3 mt-3">
+                  <label for="name" >List of Students:</label>
+                  <textarea type="input" class="form-control" rows="6" id="name" placeholder="List of Students" name="name" required ngModel #thisTitle="ngModel"></textarea>
+                  <div class="alert alert-danger" *ngIf="thisTitle.touched && thisTitle.invalid">
+                    <div *ngIf="thisTitle?.errors?.['required']">List of Students is required!</div>
+                  </div>
+                
+                </div>
+                <div class="mb-3">
+                    <label for="periode" >Period:</label>
+                    <input type="text" class="form-control" id="periode" placeholder="période" name="periode" required ngModel #thiss="ngModel">
+                    <div class="alert alert-danger" *ngIf="thiss.touched && thiss.invalid">
+                      <div *ngIf="thiss?.errors?.['required']">Period is required!</div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formation" >Formation:</label>
+                    <input type="text" class="form-control" id="formation" placeholder="formation" name="formation" required ngModel #s="ngModel">
+                    <div class="alert alert-danger" *ngIf="s.touched && s.invalid">
+                      <div *ngIf="s?.errors?.['required']">Formation is required!</div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="month" >Month:</label>
+                    <input type="text" class="form-control" id="month" placeholder="mois" name="month" ngModel required #month="ngModel">
+                    <div class="alert alert-danger" *ngIf="month.touched && month.invalid">
+                      <div *ngIf="month?.errors?.['required']">Month is required!</div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="nbExercices">Date:</label>
+                    <input type="datetime-local" id="start" name="trip-start" min="2022-01-01" ngModel required #Date="ngModel">
+                    <div class="alert alert-danger" *ngIf="Date.touched && Date.invalid">
+                      <div *ngIf="Date?.errors?.['required']">Date is required!</div>
+                    </div>
+                  </div>
+                
+                  <br/> <br/>
+                  <div class="row d-flex justify-content-end">
+                    <div class="col-2">
+                <button input type="reset" class="submit" [disabled]="!foodForm.form.valid " (click)="liste()">Generate</button> 
+              
+              </div></div>  <br/> <br/>
+                </div>
+                </div>
+                </div></div>
+              </form>
+      </div>
+  
+      <div class="row bg-white shadow d-flex justify-content-center">
+        <div class="col-6">
+          <!-- Place additional content here -->
+        </div>
+      </div>
+    </div>
+
+    
+
+  </main><!-- End #main -->

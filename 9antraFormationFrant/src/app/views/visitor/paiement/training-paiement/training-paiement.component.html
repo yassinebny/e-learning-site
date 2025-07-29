@@ -1,0 +1,128 @@
+<div class="formbold-main-wrapper" style="margin-top: 100px ; background-color: #f1f4f9;">
+
+  <div class="formbold-form-wrapper"   style="border-radius: 20px">
+    <div class="formbold-event-wrapper"  >
+      <div class="payment-container"  style="  padding-left: 0px;padding-top: 10px;border-radius: 20px" >
+        <div class="title">   <h3 style="color:#af3065d9;
+   ">Proceed to Payment</h3>
+        </div>
+
+        <div class="payment-image-container">
+          <img src="assets/img/pay.png" class="img-fluid animated " alt="Payment Image"  style="border-radius: 10px ; min-width:400px; max-height:200px"/>
+        </div>
+
+
+
+        <div  class="formbold-event-details">
+          <h3  style="color:white">Details</h3>
+
+            <ul>
+              <li >
+
+                <p   style="color:white" class="name" ><strong>    <i class="bi bi-person"></i> Name:</strong> {{ decryptedData?.firstName }} {{ decryptedData?.lastName }}</p>
+              </li>
+              <li>
+
+                <p  style="color:white"><strong> <i class="bi bi-telephone"></i> Phone Number:</strong> {{ decryptedData?.phoneNumber }}</p>
+              </li>
+              <li>
+
+                <p  style="color:white"><strong> <i class="bi bi-info-circle"></i> Trainging Name:</strong> {{ decryptedData?.formation?.nomFormation }}</p>
+              </li>
+              <li>
+
+                <p  style="color:white"><strong> <i class="bi bi-tag"></i> Price:</strong> {{ decryptedData?.formation?.price }} dt </p>
+              </li>
+              <li>
+
+                <p  style="color:white" > <strong> <i class="bi bi-building"></i>  Possibility:</strong> {{ decryptedData?.formation?.posibility }}</p>
+              </li>
+              <li>
+
+                <p  style="color:white"><strong>  <i class="bi bi-bookmark"></i> Training Category:</strong> {{ decryptedData?.formation?.categorie?.nomCate }}</p>
+              </li>
+
+            </ul>
+          </div>
+      </div>
+    </div>
+
+    <form  *ngIf="show==true ;else temp " [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+
+
+      <div class="formbold-mb-5">
+        <label  class="formbold-form-label">
+          Do you want to pay  the full traning or the period 1
+        </label>
+
+        <div class="formbold-radio-flex">
+          <div class="formbold-radio-group">
+            <select class="formbold-form-select"   formControlName="paymentOption">
+              <option *ngFor="let option of paymentOptions" [value]="option">{{ option }}</option>
+            </select>
+
+
+          </div>
+
+         </div></div>
+
+
+
+
+      <div class="formbold-mb-5" *ngIf="decryptedData?.formation?.posibility === 'Possibility of online education'&& dynamicForm.get('paymentOption')?.value !=''">
+        <label  class="formbold-form-label">
+          Do you want online courses
+        </label>
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+
+          <label class="formbold-radio-label">
+
+
+
+            <input
+              class="formbold-input-radio"
+              type="radio"
+
+              id="qusOnea"
+              [value]="'online'" formControlName="onlineEducation"
+            />
+         Online
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input
+              [value]="'onsite'" formControlName="onlineEducation"
+              class="formbold-input-radio"
+              type="radio"
+
+              id="qusOneb"
+            />
+            Onsite
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div></div></div>
+
+      <div>
+        <label  class="formbold-form-label"> Total Price:</label>
+        <input type="number" formControlName="price"  />
+      </div>
+
+      <div>
+        <label  class="formbold-form-label">Adjusted Price:</label>
+        <input type="number" formControlName="adjustedPrice"  />
+      </div>
+
+      <button  style="background-color: #af3065d9;" class="formbold-btn">Submit</button>
+    </form>
+<ng-template #temp>
+  <label  class="formbold-form-label" style="text-align: center; "> You already paid for this training!</label>
+</ng-template>
+
+  </div>
+</div>
+
+

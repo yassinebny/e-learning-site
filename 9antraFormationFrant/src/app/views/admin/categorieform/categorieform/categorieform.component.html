@@ -1,0 +1,45 @@
+<main id="main">
+  <div class="d-lg-none d-md-block"><br><br><br></div>
+
+  <div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="container d-flex justify-content-center">
+      <div class="card shadow-sm h-100 col-md-6">
+        <div class="card-body">
+          <h1 class="text-center fw-bold mb-3" style="color: #AF3065;">Add Category</h1>
+
+          <form (ngSubmit)="categorieForm.valid && addCategorie()" #categorieForm="ngForm">
+            <div class="form-group mb-3">
+              <label for="exampleFormControlInput1">Category name</label>
+              <input [(ngModel)]="nomCate" name="nomCate" type="text" class="form-control" id="exampleFormControlInput1" placeholder="" required #nomCateInput="ngModel">
+              <div *ngIf="nomCateInput.errors?.['required'] && (nomCateInput.dirty || nomCateInput.touched)" class="alert alert-danger mt-2">
+                Category name is required.
+              </div>
+
+            </div>
+
+            <div class="text-end">
+              <div *ngIf="nomCateInput.invalid && categorieForm.submitted" class="alert alert-danger mt-2">
+                Category name is required.
+              </div>
+
+              <button type="button" id="cancelButton" name="cancelButton" class="btn btn-light" style="border-radius: 5px;" routerLink="/admin/categories">Cancel</button>
+              <button type="submit" id="submitButton" name="submitButton" class="btn" style="background-color: #AF3065; color: white; border-radius: 5px;">Add</button>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

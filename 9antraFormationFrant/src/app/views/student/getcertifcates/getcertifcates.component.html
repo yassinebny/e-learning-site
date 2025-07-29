@@ -1,0 +1,55 @@
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="main-body">
+    <div class="row gutters-sm mt-5">
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-body text-center p-2 my-2">
+            <img [src]="'../../../../assets/Documents/' + projectsq.image" alt="Admin" style="border-radius: 20px;" width="175">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-3" style="width: 100%;"> <!-- Ajoutez la largeur de 100% à la carte -->
+            <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-sm-4">
+                <h5 class="mb-1">Full Name</h5>
+                <h6 class="text-secondary">{{ projectsq.lastName }} {{ projectsq.firstName }}</h6>
+              </div>
+              <div class="col-sm-4">
+                <h5 class="mb-1">Email</h5>
+                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c7a756c5c766977716974327d70">{{ projectsq.username }}</a>
+              </div>
+              <div class="col-sm-4">
+                <h5 class="mb-1">Country</h5>
+                <h6 class="text-secondary">{{ projectsq.country }}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <h5 class="mb-1">About</h5>
+                <h6 class="text-secondary">I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</h6>
+              </div>
+              <div class="col-sm-4">
+                <h5 class="mb-1">Phone</h5>
+                <h6 class="text-secondary">{{ projectsq.numeroTel }}</h6>
+              </div>
+              <div class="col-sm-4">
+                <h5 class="mb-1" *ngFor="let formationName of formationNames">Certificates</h5>
+                <ul> <li><h6>{{formationNames}}</h6></li></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pdf-container">
+      <div class="pdf-wrapper" *ngFor="let projectClient of adminProjectId">
+        <iframe [src]="getSafeUrl(projectClient.path)" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,483 @@
+<main id="main">
+    <div style="margin-bottom: 50px; " class="d-block d-lg-none"> </div>
+    <div class="row justify-content-between">
+        <div class="col-8">
+            <div class="pagetitle">
+                <h1>Requests</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Requests</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="data_table card1 mt-4 " style="overflow-y: scroll; height:600px;">
+            <div *ngIf="showLoader">
+              <app-loader></app-loader>
+            </div>
+            <table *ngIf="!showLoader" class="table align-middle mb-0 bg-white  ">
+                <thead class="bg-light ">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Country</th>
+                        <th>Phone Nr</th>
+                        <th>Email</th>
+                        <th>Formation</th>
+                      <th>Period</th>
+                        <th>Status</th>
+                      <th>Payment type</th>
+                      <th>education place</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let r of requests">
+                        <td  data-bs-toggle="modal"  style="cursor: pointer;" (click)="setId(r.id!)">
+                            <div class="d-flex align-items-center">
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1"></p>
+                                    <p class="text-muted mb-0"></p>
+                                    {{ r.firstName}}
+                                </div>
+                            </div>
+                        </td>
+                        <td  data-bs-toggle="modal"  style="cursor: pointer;" (click)="setId(r.id!)">
+                            <p class="text-muted mb-0"> {{ r.lastName }}</p>
+                        </td>
+                        <td  data-bs-toggle="modal"  style="cursor: pointer;" (click)="setId(r.id!)">
+                            <p class="fw-normal mb-1">{{ r.country }} </p>
+                        </td>
+                        <td  data-bs-toggle="modal"  style="cursor: pointer;" (click)="setId(r.id!)">
+                            <div>
+                                <p class="fw-normal mb-1">{{ r.phoneNumber }} </p>
+                            </div>
+                        </td>
+                        <td  data-bs-toggle="modal"  style="cursor: pointer;" (click)="setId(r.id!)">
+                            <p>{{ r.email }}</p>
+                        </td>
+                        <td  data-bs-toggle="modal"  style="cursor: pointer;" (click)="setId(r.id!)">
+                            <p>{{ r.formationName }}</p>
+                        </td>
+                      <td>
+                        <a *ngIf="r.trainingPeriod === 'pending'" (click)="setId(r.id!);setreq(r)" class="unpaid btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#periodmodel">pending</a>
+
+                        <a *ngIf="r.trainingPeriod === '2months'" (click)="setId(r.id!);setreq(r)" class="paid btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#periodmodel">2months</a>
+                        <a *ngIf="r.trainingPeriod === 'month1'" (click)="setId(r.id!);setreq(r)" class="paid  btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#periodmodel">month 1</a>
+                        <a *ngIf="r.trainingPeriod === 'month2'" (click)="setId(r.id!);setreq(r)" class=" paid btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#periodmodel">month 2</a>
+
+
+                        <div
+                          class="modal fade"
+                          id="periodmodel"
+                          data-bs-backdrop="static"
+                          data-bs-keyboard="false"
+                          tabindex="-1"
+                          aria-labelledby="periodmodelLabel"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2 style="color: #af3065">Modify Period</h2>
+                                <button
+                                  type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <form action="">
+                                <div class="modal-body">
+                                  <div class="card1">
+                                    <div class="content">
+                                      <!-- Radio inputs for each period -->
+
+                                      <input
+                                        type="radio"
+                                        [(ngModel)]="selectedPeriod"
+
+                                        value="pending"
+                                        name="rd1"
+                                        id="two"
+                                        hidden
+                                      />
+                                      <input
+                                        type="radio"
+                                        [(ngModel)]="selectedPeriod"
+
+                                        value="2months"
+                                        name="rd"
+                                        id="three"
+                                        hidden
+                                      />
+                                      <input
+                                        type="radio"
+                                        [(ngModel)]="selectedPeriod"
+
+                                        value="month1"
+                                        name="rd"
+                                        id="four"
+                                        hidden
+                                      />
+                                      <input
+                                        type="radio"
+                                        [(ngModel)]="selectedPeriod"
+
+                                        value="month2"
+                                        name="rd"
+                                        id="five"
+                                        hidden
+                                      />
+
+
+                                      <!-- Labels for each period -->
+                                      <label for="two" class="box second">
+                                        <div class="plan">
+                                          <span class="circle"></span>
+                                          <span class="yearly">Pending</span>
+                                        </div>
+                                      </label>
+                                      <label for="three" class="box third">
+                                        <div class="plan">
+                                          <span class="circle"></span>
+                                          <span class="yearly">2months</span>
+                                        </div>
+                                      </label>
+                                      <label for="four" class="box fourth">
+                                        <div class="plan">
+                                          <span class="circle"></span>
+                                          <span class="yearly">month 1</span>
+                                        </div>
+                                      </label>
+                                      <label for="five" class="box fifth">
+                                        <div class="plan">
+                                          <span class="circle"></span>
+                                          <span class="yearly">month 2</span>
+                                        </div>
+                                      </label>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                          (click)="changePeriod(r)"
+                                          class="btn register">
+                                    Save
+                                  </button>
+                                </div>
+                              </form>
+
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>
+                            <a *ngIf="r.requestStatus === 'UNPAID'" (click)="setId(r.id!);setreq(r)" class="unpaid btn-rounded btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">UNPAID</a>
+
+                            <a *ngIf="r.requestStatus === 'PAID'" (click)="setId(r.id!);setreq(r)" class="paid btn-rounded btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">PAID</a>
+                            <a *ngIf="r.requestStatus === 'CANCELED'" (click)="setId(r.id!);setreq(r)" class="canceled btn-rounded btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">CANCELED</a>
+
+                                <div
+                                class="modal fade"
+                                id="staticBackdrop"
+                                data-bs-backdrop="static"
+                                data-bs-keyboard="false"
+                                tabindex="-1"
+                                aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true"
+                              >
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h2 style="color: #af3065">Modify Payement</h2>
+                                      <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"
+                                      ></button>
+                                    </div>
+                                    <form action="">
+                                      <div class="modal-body">
+                                        <div class="card1">
+                                          <div class="content">
+                                            <input
+                                              type="radio"
+                                              [(ngModel)]="selectedStatus"
+
+                                              value="UNPAID"
+                                              name="rd"
+                                              id="six"
+                                              hidden
+                                            />
+                                            <input
+                                              type="radio"
+                                              [(ngModel)]="selectedStatus"
+
+                                              value="PAID"
+                                              name="rd"
+                                              id="seven"
+                                              hidden
+                                            />
+                                            <input
+                                              type="radio"
+                                              [(ngModel)]="selectedStatus"
+
+                                              value="CANCELED"
+                                              name="rd"
+                                              id="eigth"
+                                              hidden
+                                            />
+                                            <label for="six" class="box sixth">
+                                              <div class="plan">
+                                                <span class="circle"></span>
+                                                <span class="yearly">Unpaid</span>
+                                              </div>
+                                            </label>
+                                            <label for="seven" class="box seventh">
+                                              <div class="plan">
+                                                <span class="circle"></span>
+                                                <span class="yearly">Paid</span>
+                                              </div>
+                                            </label>
+                                            <label for="eigth" class="box eighth">
+                                              <div class="plan">
+                                                <span class="circle"></span>
+                                                <span class="yearly">Canceled</span>
+                                              </div>
+                                            </label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button
+                                          type="submit"
+                                          class="btn-close"
+                                          data-bs-dismiss="modal"
+                                          aria-label="Close"
+                                          (click)="changeStatus(r) "
+                                          class="btn register"
+                                        >
+                                          Save
+                                        </button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                        </td>
+
+
+
+
+
+
+
+
+                      <td>
+                        <a *ngIf="r.paiementType  === 'ONLINE'" (click)="setId(r.id!)" class="unpaid btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#eduplaceemodel">ONLINE</a>
+
+                        <a *ngIf="r.paiementType  === 'ONSITE'" (click)="setId(r.id!)" class="paid btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#eduplaceemodel">ONSITE</a>
+                        <a *ngIf="r.paiementType === 'PENDING'" (click)="setId(r.id!)" class="unpaid btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#eduplaceemodel">PENDING</a>
+
+
+                        <div
+                          class="modal fade"
+                          id="eduplaceemodel"
+                          data-bs-backdrop="static"
+                          data-bs-keyboard="false"
+                          tabindex="-1"
+                          aria-labelledby="eduplaceemodelLabel"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2 style="color: #af3065">Modify Paiement type</h2>
+                                <button
+                                  type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <form action="">
+                                <div class="modal-body">
+                                  <div class="card1">
+                                    <div class="content">
+                                      <!-- Radio inputs for each period -->
+
+                                      <input
+                                        type="radio"
+                                        [(ngModel)]="selectedPaymentType"
+                                        value="ONLINE"
+                                        name="rd1"
+                                        id="ten"
+                                        hidden
+                                      />
+                                      <input
+                                        type="radio"
+                                        [(ngModel)]="selectedPaymentType"
+                                        value="ONSITE"
+                                        name="rd"
+                                        id="eleven"
+                                        hidden
+                                      />
+
+
+
+                                      <!-- Labels for each period -->
+                                      <label for="ten" class="box tenth">
+                                        <div class="plan">
+                                          <span class="circle"></span>
+                                          <span class="yearly">ONLINE</span>
+                                        </div>
+                                      </label>
+                                      <label for="eleven" class="box eleventh">
+                                        <div class="plan">
+                                          <span class="circle"></span>
+                                          <span class="yearly">ONSITE</span>
+                                        </div>
+                                      </label>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="changepaytype()" class="btn register">
+                                    Save
+                                  </button>
+                                </div>
+                              </form>
+
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+
+
+
+
+
+
+
+
+
+
+
+
+                      <td>
+                        <a *ngIf="r.educationPlace  === 'ONLINE'" (click)="setId(r.id!)" class="unpaid btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#paytypemodel">ONLINE</a>
+
+                        <a *ngIf="r.educationPlace   === 'ONSITE'" (click)="setId(r.id!)" class="paid btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#paytypemodel">ONSITE</a>
+                        <a *ngIf="r.educationPlace  === 'PENDING'" (click)="setId(r.id!)" class="unpaid btn-rounded btn-sm"
+                           data-bs-toggle="modal" data-bs-target="#paytypemodel">PENDING</a>
+
+
+                        <div
+                          class="modal fade"
+                          id="paytypemodel"
+                          data-bs-backdrop="static"
+                          data-bs-keyboard="false"
+                          tabindex="-1"
+                          aria-labelledby="periodmodelLabel"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2 style="color: #af3065">Modify education place</h2>
+                                <button
+                                  type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <form action="">
+                                <div class="modal-body">
+                                  <div class="card1">
+                                    <div class="content">
+                                      <!-- Radio inputs for each period -->
+
+                                      <input
+                                        type="radio"
+                                        [(ngModel)]="selectedEducationPlace"
+                                        value="ONLINE"
+                                        name="rd1"
+                                        id="twelve"
+                                        hidden
+                                      />
+                                      <input
+                                        type="radio"
+                                        [(ngModel)]="selectedEducationPlace"
+                                        value="ONSITE"
+                                        name="rd"
+                                        id="thirteen"
+                                        hidden
+                                      />
+
+
+
+                                      <!-- Labels for each period -->
+                                      <label for="twelve" class="box twelveth">
+                                        <div class="plan">
+                                          <span class="circle"></span>
+                                          <span class="yearly">ONLINE</span>
+                                        </div>
+                                      </label>
+                                      <label for="thirteen" class="box thirteenth">
+                                        <div class="plan">
+                                          <span class="circle"></span>
+                                          <span class="yearly">ONSITE</span>
+                                        </div>
+                                      </label>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="changeeducationplace()" class="btn register">
+                                    Save
+                                  </button>
+                                </div>
+                              </form>
+
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+
+
+
+
+
+
+
+                    </tr>
+                    <tr *ngIf="requests?.length == 0">
+                      <td colspan="7" class="text-center">No requests found</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</main>
