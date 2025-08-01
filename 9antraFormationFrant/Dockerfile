@@ -10,7 +10,7 @@ RUN ng build
 
 FROM nginx:latest
 
-COPY --from=build app/dist/the-bridge /usr/share/nginx/html
+COPY --from=build /app/dist/the-bridge /usr/share/nginx/html
 
 EXPOSE 80
 
