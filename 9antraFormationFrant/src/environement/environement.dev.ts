@@ -1,7 +1,9 @@
-export const environement = {
-  BASE_URL: 'http://localhost:8094/api',
-  websocketUrl: 'http://localhost:8081/ws',
+export const environment = {
   production: false,
+
+  BASE_URL: '/api',
+  websocketUrl: '/ws',
+
   firebase: {
     apiKey: "AIzaSyD6IDfMDyZTn5TbBu6mdVxo8eoeQrA_ErE",
     authDomain: "elearning-groups-chat.firebaseapp.com",
