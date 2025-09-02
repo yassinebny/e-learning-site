@@ -1,4 +1,4 @@
-export const environment = {
+export const environement = {
   production: false,
 
   BASE_URL: '/api',
