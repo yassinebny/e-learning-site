@@ -15,37 +15,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      # تثبيت Java 17 قبل تشغيل SonarScanner
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # تفعيل الكاش لتسريع التحليل وتفادي إعادة تحميل الـ Plugins
       - name: Cache SonarQube packages
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
 
-      # تعطيل JRE provisioning
+      # تعطيل JRE provisioning بشكل نهائي
       - name: Disable JRE provisioning
         run: echo "SONAR_SCANNER_OPTS=-Dsonar.scanner.provisioning.enable=false" >> $GITHUB_ENV
 
-      # تشغيل التحليل مع استبعاد الملفات الكبيرة والفيديوهات
       - name: Run SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         with:
           projectBaseDir: 9antraFormationFrant
           args: >
-            -Dsonar.exclusions=**/*.mp4,**/*.mkv,**/src/assets/Records/**,**/src/assets/adminProjects/** 
+            -Dsonar.exclusions=**/*.mp4,**/*.mkv,**/src/assets/Records/**,**/src/assets/adminProjects/**
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
-      # إذا أردت فشل الـ Job عند Quality Gate أحمر، أزل التعليق عن هذه الأسطر
-      # - uses: SonarSource/sonarqube-quality-gate-action@v1
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
