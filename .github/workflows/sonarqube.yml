@@ -10,6 +10,12 @@ jobs:
     name: Build and analyze
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        attempt: [1, 2, 3]  # إعادة المحاولة 3 مرات
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,15 +28,17 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # تفعيل الكاش لتسريع التحليل
+      # تفعيل الكاش لتسريع التحليل وتفادي إعادة تحميل الـ Plugins
       - name: Cache SonarQube packages
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
+          restore-keys: |
+            ${{ runner.os }}-sonar
 
-      # تشغيل التحليل مع إيقاف ميزة JRE provisioning
-      - name: Run SonarQube Scan
+      # تشغيل التحليل مع تعطيل ميزة JRE provisioning
+      - name: Run SonarQube Scan (attempt ${{ matrix.attempt }})
         uses: SonarSource/sonarqube-scan-action@v5
         with:
           projectBaseDir: 9antraFormationFrant
@@ -45,4 +53,3 @@ jobs:
       #   timeout-minutes: 5
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
