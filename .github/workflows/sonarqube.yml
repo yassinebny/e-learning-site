@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
     name: Build and analyze
@@ -14,16 +13,36 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - uses: SonarSource/sonarqube-scan-action@v5
+          fetch-depth: 0 # مهم لتفادي مشاكل التحليل مع SonarQube
+
+      # تثبيت Java 17 قبل تشغيل SonarScanner
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # تفعيل الكاش لتسريع التحليل
+      - name: Cache SonarQube packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+
+      # تشغيل التحليل مع إيقاف ميزة JRE provisioning
+      - name: Run SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
         with:
           projectBaseDir: 9antraFormationFrant
+          args: >
+            -Dsonar.scanner.provisioning.enable=false
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
+
+      # إذا أردت فشل الـ Job عند Quality Gate أحمر، أزل التعليق عن هذه الأسطر
       # - uses: SonarSource/sonarqube-quality-gate-action@v1
       #   timeout-minutes: 5
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
