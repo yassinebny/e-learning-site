@@ -10,16 +10,10 @@ jobs:
     name: Build and analyze
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      max-parallel: 1
-      matrix:
-        attempt: [1, 2, 3]  # إعادة المحاولة 3 مرات
-
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # مهم لتفادي مشاكل التحليل مع SonarQube
+          fetch-depth: 0
 
       # تثبيت Java 17 قبل تشغيل SonarScanner
       - name: Set up JDK
@@ -34,16 +28,18 @@ jobs:
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
-          restore-keys: |
-            ${{ runner.os }}-sonar
 
-      # تشغيل التحليل مع تعطيل ميزة JRE provisioning
-      - name: Run SonarQube Scan (attempt ${{ matrix.attempt }})
+      # تعطيل JRE provisioning
+      - name: Disable JRE provisioning
+        run: echo "SONAR_SCANNER_OPTS=-Dsonar.scanner.provisioning.enable=false" >> $GITHUB_ENV
+
+      # تشغيل التحليل مع استبعاد الملفات الكبيرة والفيديوهات
+      - name: Run SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         with:
           projectBaseDir: 9antraFormationFrant
           args: >
-            -Dsonar.scanner.provisioning.enable=false
+            -Dsonar.exclusions=**/*.mp4,**/*.mkv,**/src/assets/Records/**,**/src/assets/adminProjects/** 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
