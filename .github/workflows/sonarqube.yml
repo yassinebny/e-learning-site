@@ -11,34 +11,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # خطوة جلب الكود
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # تثبيت Java 17
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
+      # تفعيل كاش SonarQube لتسريع التحليل
       - name: Cache SonarQube packages
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
 
-      # تعطيل JRE provisioning
+      # تعطيل JRE provisioning لتجنب أخطاء التحميل
       - name: Disable JRE provisioning
         run: echo "SONAR_SCANNER_OPTS=-Dsonar.scanner.provisioning.enable=false" >> $GITHUB_ENV
 
-      - name: Run SonarQube Scan with Retry
-        run: |
-          for i in 1 2 3; do
-            sonar-scanner -Dsonar.projectBaseDir=9antraFormationFrant \
-              -Dsonar.exclusions=**/*.mp4,**/*.mkv,**/src/assets/Records/**,**/src/assets/adminProjects/** && break
-            echo "Retry $i/3"
-            sleep 10
-          done
+      # تشغيل تحليل SonarQube مع استبعاد الملفات الكبيرة والفيديوهات
+      - name: Run SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        with:
+          projectBaseDir: 9antraFormationFrant
+          args: >
+            -Dsonar.exclusions=**/*.mp4,**/*.mkv,**/src/assets/Records/**,**/src/assets/adminProjects/**
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
