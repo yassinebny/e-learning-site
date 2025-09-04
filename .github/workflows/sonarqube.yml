@@ -11,35 +11,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # خطوة جلب الكود
+      # 1️⃣ استنساخ الكود
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # تثبيت Java 17
+      # 2️⃣ تثبيت Java 17 (مطلوب لتشغيل SonarScanner)
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # تفعيل كاش SonarQube لتسريع التحليل
+      # 3️⃣ تفعيل الكاش لتسريع التحليل
       - name: Cache SonarQube packages
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
 
-      # تعطيل JRE provisioning لتجنب أخطاء التحميل
+      # 4️⃣ تعطيل JRE provisioning نهائيًا لتجنب خطأ 404
       - name: Disable JRE provisioning
         run: echo "SONAR_SCANNER_OPTS=-Dsonar.scanner.provisioning.enable=false" >> $GITHUB_ENV
 
-      # تشغيل تحليل SonarQube مع استبعاد الملفات الكبيرة والفيديوهات
+      # 5️⃣ تشغيل التحليل مع استبعاد الملفات الكبيرة والفيديوهات
       - name: Run SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        with:
-          projectBaseDir: 9antraFormationFrant
-          args: >
+        run: |
+          sonar-scanner \
+            -Dsonar.projectBaseDir=9antraFormationFrant \
             -Dsonar.exclusions=**/*.mp4,**/*.mkv,**/src/assets/Records/**,**/src/assets/adminProjects/**
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
