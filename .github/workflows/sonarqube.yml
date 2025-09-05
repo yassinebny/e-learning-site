@@ -26,8 +26,8 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
 
-      # تشغيل التحليل مع استبعاد الملفات الكبيرة والفيديوهات
-      - uses: SonarSource/sonarqube-scan-action@v5
+      - name: Run SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
         with:
           projectBaseDir: 9antraFormationFrant
           args: >
