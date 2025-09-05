@@ -1,53 +1,27 @@
-name: Build and SonarQube Scan
+name: Build
 
 on:
   push:
     branches:
       - main
-  pull_request:
+
 
 jobs:
   build:
+    name: Build and analyze
     runs-on: ubuntu-latest
 
     steps:
-      # جلب الكود
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
-      # تثبيت JDK
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      # تفعيل الكاش لمجلد SonarQube
-      - name: Cache SonarQube packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-
-      # خطوة تنظيف الكاش في حالة فشل التحميل السابق
-      - name: Clean SonarQube cache if needed
-        run: |
-          if [ -d ~/.sonar/cache ]; then
-            echo "Cleaning Sonar cache to avoid corrupted plugins..."
-            rm -rf ~/.sonar/cache
-          fi
-
-      # تشغيل الفحص مع منطق إعادة المحاولة لتفادي مشاكل الشبكة
-      - name: Run SonarQube Scan with retry
-        run: |
-          for i in {1..3}; do
-            echo "Running SonarQube Scan (attempt $i)..."
-            npx sonar-scanner \
-              -Dsonar.projectBaseDir=9antraFormationFrant \
-              -Dsonar.exclusions=**/*.mp4,**/*.mkv,**/src/assets/Records/**,**/src/assets/adminProjects/** \
-            && break || echo "Retrying in 20 seconds..." && sleep 20
-          done
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # If you wish to fail your job when the Quality Gate is red, uncomment the
+      # following lines. This would typically be used to fail a deployment.
+      # - uses: SonarSource/sonarqube-quality-gate-action@v1
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
