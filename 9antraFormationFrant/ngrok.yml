@@ -1,9 +1,7 @@
-version: 2
+version: "2"
+authtoken: 32I6YEMAfcKjSBESa7eImYPdavf_6WeFUveuGByfgxRZpdt7r
 tunnels:
   sonar:
-    addr: http://sonar:9000
     proto: http
-    schemes:
-      - https
-      - http
-    domain: classic-worm-unlikely.ngrok-free.app
+    addr: sonar:9000
+    hostname: classic-worm-unlikely.ngrok-free.app
