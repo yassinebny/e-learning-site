@@ -11,20 +11,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ Step 1: Checkout code
+      # ✅ Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # ✅ Step 2: Set up Java
+      # ✅ Set up JDK 17
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # ✅ Step 3: Install SonarScanner CLI
+      # ✅ Install SonarScanner CLI
       - name: Install SonarScanner CLI
         run: |
           SCANNER_VERSION=7.2.0.5079
@@ -33,21 +33,21 @@ jobs:
           mv sonar-scanner-$SCANNER_VERSION-linux-x64 $HOME/sonar-scanner
           echo "$HOME/sonar-scanner/bin" >> $GITHUB_PATH
 
-      # ✅ Step 4: Build Backend (generate compiled classes)
+      # ✅ Build Backend
       - name: Build Backend
         run: |
           cd 9antrakidsFormationBack
           ./mvnw clean install -DskipTests
 
-      # ✅ Step 5: Run SonarQube scan for Backend
+      # ✅ Run SonarQube Scan
       - name: Run SonarQube Scan (Backend)
         run: |
+          cd 9antrakidsFormationBack
           sonar-scanner \
             -Dsonar.projectKey=e-9antrakids-sonar \
             -Dsonar.projectName="E-9antraKids Backend" \
             -Dsonar.projectVersion=1.0 \
-            -Dsonar.projectBaseDir=9antrakidsFormationBack \
             -Dsonar.sources=src \
-            -Dsonar.java.binaries=9antrakidsFormationBack/target/classes \
+            -Dsonar.java.binaries=target/classes \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
