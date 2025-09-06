@@ -11,20 +11,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ Checkout code
+      # ✅ Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # ✅ Set up JDK 17
+      # ✅ Step 2: Cache Maven dependencies (لتسريع البناء)
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # ✅ Step 3: Set up JDK 17
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # ✅ Install SonarScanner CLI
+      # ✅ Step 4: Install SonarScanner CLI
       - name: Install SonarScanner CLI
         run: |
           SCANNER_VERSION=7.2.0.5079
@@ -33,16 +43,17 @@ jobs:
           mv sonar-scanner-$SCANNER_VERSION-linux-x64 $HOME/sonar-scanner
           echo "$HOME/sonar-scanner/bin" >> $GITHUB_PATH
 
-      # ✅ Build Backend
+      # ✅ Step 5: Build Backend
       - name: Build Backend
         run: |
           cd 9antrakidsFormationBack
           ./mvnw clean install -DskipTests
 
-      # ✅ Run SonarQube Scan
+      # ✅ Step 6: Run SonarQube Scan
       - name: Run SonarQube Scan (Backend)
         run: |
           cd 9antrakidsFormationBack
+          ls -l target/classes  # للتأكد أن الملفات موجودة
           sonar-scanner \
             -Dsonar.projectKey=e-9antrakids-sonar \
             -Dsonar.projectName="E-9antraKids Backend" \
