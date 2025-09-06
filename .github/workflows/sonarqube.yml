@@ -40,7 +40,12 @@ jobs:
           chmod +x mvnw
           ./mvnw clean compile -DskipTests
 
-      # Step 5: Run SonarQube Scan (Backend)
+      # (Optional) Debug to verify compiled classes exist
+      - name: Debug - Check classes folder
+        run: |
+          ls -l 9antrakidsFormationBack/target/classes
+
+      # Step 5: Run SonarQube scan for Backend
       - name: Run SonarQube Scan (Backend)
         run: |
           sonar-scanner \
