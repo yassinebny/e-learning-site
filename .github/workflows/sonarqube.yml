@@ -1,4 +1,4 @@
-name: Build and Analyze Frontend
+name: Build and Analyze Backend
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  sonar-frontend:
-    name: SonarQube Analysis - Frontend
+  sonar-backend:
+    name: SonarQube Analysis - Backend
     runs-on: ubuntu-latest
 
     steps:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Needed for accurate analysis
+          fetch-depth: 0
 
       # ✅ Step 2: Set up Java
       - name: Set up JDK 17
@@ -33,14 +33,14 @@ jobs:
           mv sonar-scanner-$SCANNER_VERSION-linux-x64 $HOME/sonar-scanner
           echo "$HOME/sonar-scanner/bin" >> $GITHUB_PATH
 
-      # ✅ Step 4: Run SonarQube scan for Frontend
-      - name: Run SonarQube Scan (Frontend)
+      # ✅ Step 4: Run SonarQube scan for Backend
+      - name: Run SonarQube Scan (Backend)
         run: |
           sonar-scanner \
             -Dsonar.projectKey=e-9antrakids-sonar \
-            -Dsonar.projectName="E-9antraKids Frontend" \
+            -Dsonar.projectName="E-9antraKids Backend" \
             -Dsonar.projectVersion=1.0 \
-            -Dsonar.projectBaseDir=9antraFormationFrant \
+            -Dsonar.projectBaseDir=9antrakidsFormationBack \
             -Dsonar.sources=src \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
