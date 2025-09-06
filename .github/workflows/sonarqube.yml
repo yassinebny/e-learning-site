@@ -33,7 +33,7 @@ jobs:
           mv sonar-scanner-$SCANNER_VERSION-linux-x64 $HOME/sonar-scanner
           echo "$HOME/sonar-scanner/bin" >> $GITHUB_PATH
 
-      # Step 4: Build Backend (to generate class files for Java analysis)
+      # Step 4: Build Backend (generate compiled classes)
       - name: Build Backend
         run: |
           cd 9antrakidsFormationBack
@@ -43,7 +43,7 @@ jobs:
       - name: Run SonarQube Scan (Backend)
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=e-9antrakids-sonar
+            -Dsonar.projectKey=e-9antrakids-sonar \
             -Dsonar.projectName="E-9antraKids Backend" \
             -Dsonar.projectVersion=1.0 \
             -Dsonar.projectBaseDir=9antrakidsFormationBack \
