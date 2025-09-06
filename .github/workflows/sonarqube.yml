@@ -1,4 +1,4 @@
-name: Build and Analyze Backend
+name: SonarQube Analysis - Backend
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  sonar-backend:
+  backend:
     name: SonarQube Analysis - Backend
     runs-on: ubuntu-latest
 
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Needed for accurate analysis
+          fetch-depth: 0
 
       # Step 2: Set up Java
       - name: Set up JDK 17
@@ -24,35 +24,23 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # Step 3: Install SonarScanner CLI
-      - name: Install SonarScanner CLI
-        run: |
-          SCANNER_VERSION=7.2.0.5079
-          wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SCANNER_VERSION-linux-x64.zip -O sonar-scanner.zip
-          unzip -q sonar-scanner.zip
-          mv sonar-scanner-$SCANNER_VERSION-linux-x64 $HOME/sonar-scanner
-          echo "$HOME/sonar-scanner/bin" >> $GITHUB_PATH
+      # Step 3: Build Backend (Maven)
+      - name: Build Backend
+        run: mvn clean compile
+        working-directory: 9antrakidsFormationBack
 
-      # Step 4: Build Backend (Maven)
-      - name: Build Backend with Maven
-        run: mvn clean package -f 9antrakidsFormationBack/pom.xml
+      # Step 4: Run SonarQube Scan for Backend
+      - name: Run SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        with:
+          args: >
+            -Dsonar.projectKey=e-9antrakids-backend
+            -Dsonar.projectName="E-9antraKids Backend"
+            -Dsonar.projectVersion=1.0
+            -Dsonar.projectBaseDir=9antrakidsFormationBack
+            -Dsonar.sources=src
+            -Dsonar.java.binaries=target/classes
 
-      # Step 5: Run SonarQube Scan (Backend)
-      - name: Run SonarQube Scan (Backend)
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=e-9antrakids-sonar \
-            -Dsonar.projectName="E-9antraKids Backend" \
-            -Dsonar.projectVersion=1.0 \
-            -Dsonar.projectBaseDir=9antrakidsFormationBack \
-            -Dsonar.sources=src \
-            -Dsonar.java.binaries=target/classes \
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-
-      # Step 6 (Optional): Check Quality Gate
-      # - name: Check SonarQube Quality Gate
-      #   uses: SonarSource/sonarqube-quality-gate-action@v1
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
