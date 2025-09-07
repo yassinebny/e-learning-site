@@ -11,47 +11,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Step 2: Set up Java
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # Step 3: Install SonarScanner CLI
       - name: Install SonarScanner CLI
         run: |
-          SCANNER_VERSION=7.2.0.5079
-          wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SCANNER_VERSION-linux-x64.zip -O sonar-scanner.zip
+          SCANNER_VERSION=4.16.0.5274
+          wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SCANNER_VERSION-linux.zip -O sonar-scanner.zip
           unzip -q sonar-scanner.zip
-          mv sonar-scanner-$SCANNER_VERSION-linux-x64 $HOME/sonar-scanner
+          mv sonar-scanner-$SCANNER_VERSION-linux $HOME/sonar-scanner
           echo "$HOME/sonar-scanner/bin" >> $GITHUB_PATH
 
-      # Step 4: Build Backend (compile Java classes)
       - name: Build Backend
         run: |
           cd 9antrakidsFormationBack
           chmod +x mvnw
           ./mvnw clean compile -DskipTests
 
-      # Step 5: Ensure classes exist
       - name: Ensure compiled classes exist
         run: |
           cd 9antrakidsFormationBack
           if [ ! -d "target/classes" ]; then
-            echo "Compiled classes not found, running mvnw install..."
             ./mvnw install -DskipTests
           fi
-          echo "Listing target/classes:"
           ls -l target/classes
 
-      # Step 6: Run SonarQube scan for Backend
       - name: Run SonarQube Scan (Backend)
         run: |
           sonar-scanner \
