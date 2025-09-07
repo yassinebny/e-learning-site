@@ -24,20 +24,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # ✅ Step 3: Set up Node.js (for frontend build)
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18' # or your project version
-
-      # ✅ Step 4: Install dependencies & build frontend
-      - name: Install dependencies
-        run: |
-          cd frontend  # adjust if your folder name differs
-          npm install
-          npm run build
-
-      # ✅ Step 5: Install SonarScanner CLI
+      # ✅ Step 3: Install SonarScanner CLI
       - name: Install SonarScanner CLI
         run: |
           SCANNER_VERSION=7.2.0.5079
@@ -46,14 +33,14 @@ jobs:
           mv sonar-scanner-$SCANNER_VERSION-linux-x64 $HOME/sonar-scanner
           echo "$HOME/sonar-scanner/bin" >> $GITHUB_PATH
 
-      # ✅ Step 6: Run SonarQube scan for Frontend
+      # ✅ Step 4: Run SonarQube scan for Frontend
       - name: Run SonarQube Scan (Frontend)
         run: |
-          cd frontend
           sonar-scanner \
             -Dsonar.projectKey=e-9antrakids-sonar \
             -Dsonar.projectName="E-9antraKids Frontend" \
             -Dsonar.projectVersion=1.0 \
+            -Dsonar.projectBaseDir=9antraFormationFrant \
             -Dsonar.sources=src \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
