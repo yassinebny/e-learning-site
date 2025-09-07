@@ -40,12 +40,12 @@ jobs:
           chmod +x mvnw
           ./mvnw clean compile -DskipTests
 
-      # (Optional) Debug to verify compiled classes exist
+      # Step 5: Debug - Verify compiled classes
       - name: Debug - Check classes folder
         run: |
           ls -l 9antrakidsFormationBack/target/classes
 
-      # Step 5: Run SonarQube scan for Backend
+      # Step 6: Run SonarQube Scan (Backend)
       - name: Run SonarQube Scan (Backend)
         run: |
           sonar-scanner \
@@ -55,5 +55,6 @@ jobs:
             -Dsonar.projectBaseDir=9antrakidsFormationBack \
             -Dsonar.sources=src \
             -Dsonar.java.binaries=9antrakidsFormationBack/target/classes \
+            -Dsonar.scanner.skipJreProvisioning=true \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
