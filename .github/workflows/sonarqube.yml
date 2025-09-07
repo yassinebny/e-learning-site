@@ -22,6 +22,14 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Install SonarScanner CLI
         run: |
           SCANNER_VERSION=4.16.0.5274
@@ -42,7 +50,7 @@ jobs:
 
       - name: Run SonarQube Scan (Backend)
         run: |
-          sonar-scanner \
+          $HOME/sonar-scanner/bin/sonar-scanner \
             -Dsonar.projectKey=E-9antraKids-Backend \
             -Dsonar.projectName="E-9antraKids Backend" \
             -Dsonar.projectVersion=1.0 \
