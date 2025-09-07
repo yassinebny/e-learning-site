@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  sonar-backend:
-    name: SonarQube Analysis - Backend
+  build-and-sonar:
+    name: Build and SonarQube Analysis - Backend
     runs-on: ubuntu-latest
 
     steps:
@@ -30,25 +30,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Build Backend
+      - name: Debug - List project folders
+        run: |
+          ls -l 9antrakidsFormationBack
+
+      - name: Build and Run SonarQube Analysis
         run: |
           cd 9antrakidsFormationBack
           chmod +x mvnw
-          ./mvnw clean compile -DskipTests
-
-      - name: Debug - Check compiled classes
-        run: |
-          ls -l 9antrakidsFormationBack/target/classes
-
-      - name: Run SonarQube Scan (Backend)
-        uses: SonarSource/sonarqube-scan-action@v5
-        with:
-          projectKey: E-9antraKids-Backend
-          projectName: "E-9antraKids Backend"
-          projectVersion: 1.0
-          projectBaseDir: 9antrakidsFormationBack
-          sources: 9antrakidsFormationBack/src
-          binaries: 9antrakidsFormationBack/target/classes
-        env:
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          ./mvnw clean verify sonar:sonar \
+            -Dsonar.projectKey=E-9antraKids-Backend \
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
