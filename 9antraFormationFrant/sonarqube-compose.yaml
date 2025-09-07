@@ -30,7 +30,7 @@ services:
   ngrok:
     image: ngrok/ngrok:latest
     environment:
-      - NGROK_AUTHTOKEN=32N8R4An4353i9hfEw9awjBfGgl_6PKvjV7SnXVNSG7jXndmU
+      - NGROK_AUTHTOKEN=32NljZhCA9IbtLHfbPFsrht1LiY_5V1FXLCbxhD5dE4gt8tHk
     command:
       - "start"
       - "--all"

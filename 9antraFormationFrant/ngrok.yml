@@ -1,7 +1,7 @@
 version: "2"
-authtoken: 32N8R4An4353i9hfEw9awjBfGgl_6PKvjV7SnXVNSG7jXndmU
+authtoken: 32NljZhCA9IbtLHfbPFsrht1LiY_5V1FXLCbxhD5dE4gt8tHk
 tunnels:
   sonar:
     proto: http
     addr: sonar:9000
-    hostname: khalilah-synonymic-jaymie.ngrok-free.app
+    hostname: curmudgeonly-decurved-hilaria.ngrok-free.app
