@@ -30,14 +30,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Install SonarScanner CLI
-        run: |
-          SCANNER_VERSION=4.16.0.5274
-          wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SCANNER_VERSION-linux.zip -O sonar-scanner.zip
-          unzip -q sonar-scanner.zip
-          mv sonar-scanner-$SCANNER_VERSION-linux $HOME/sonar-scanner
-          echo "$HOME/sonar-scanner/bin" >> $GITHUB_PATH
-
       - name: Build Backend
         run: |
           cd 9antrakidsFormationBack
@@ -46,17 +38,17 @@ jobs:
 
       - name: Debug - Check compiled classes
         run: |
-          ls -l e-learning-site/9antrakidsFormationBack/target/classes
+          ls -l 9antrakidsFormationBack/target/classes
 
       - name: Run SonarQube Scan (Backend)
-        run: |
-          $HOME/sonar-scanner/bin/sonar-scanner \
-            -Dsonar.projectKey=E-9antraKids-Backend \
-            -Dsonar.projectName="E-9antraKids Backend" \
-            -Dsonar.projectVersion=1.0 \
-            -Dsonar.projectBaseDir=9antrakidsFormationBack \
-            -Dsonar.sources=9antrakidsFormationBack/src \
-            -Dsonar.java.binaries=9antrakidsFormationBack/target/classes \
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.scanner.skipJreProvisioning=true
+        uses: SonarSource/sonarqube-scan-action@v5
+        with:
+          projectKey: E-9antraKids-Backend
+          projectName: "E-9antraKids Backend"
+          projectVersion: 1.0
+          projectBaseDir: 9antrakidsFormationBack
+          sources: 9antrakidsFormationBack/src
+          binaries: 9antrakidsFormationBack/target/classes
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
