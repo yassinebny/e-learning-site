@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Step 2: Set up Java JDK 17
+      # Step 2: Set up Java
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -36,14 +36,14 @@ jobs:
       # Step 4: Build Backend (compile Java classes)
       - name: Build Backend
         run: |
-          cd 9antrakidsFormationBack
+          cd e-learning-site/9antrakidsFormationBack
           chmod +x mvnw
           ./mvnw clean compile -DskipTests
 
-      # Step 5: Debug - Verify compiled classes exist
+      # Step 5: Debug - Check classes folder
       - name: Debug - Check classes folder
         run: |
-          ls -l 9antrakidsFormationBack/target/classes
+          ls -l e-learning-site/9antrakidsFormationBack/target/classes
 
       # Step 6: Run SonarQube scan for Backend
       - name: Run SonarQube Scan (Backend)
@@ -52,9 +52,9 @@ jobs:
             -Dsonar.projectKey=E-9antraKids-Backend \
             -Dsonar.projectName="E-9antraKids Backend" \
             -Dsonar.projectVersion=1.0 \
-            -Dsonar.projectBaseDir=9antrakidsFormationBack \
-            -Dsonar.sources=src \
-            -Dsonar.java.binaries=9antrakidsFormationBack/target/classes \
-            -Dsonar.scanner.skipJreProvisioning=true \
+            -Dsonar.projectBaseDir=e-learning-site/9antrakidsFormationBack \
+            -Dsonar.sources=e-learning-site/9antrakidsFormationBack/src \
+            -Dsonar.java.binaries=e-learning-site/9antrakidsFormationBack/target/classes \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.scanner.skipJreProvisioning=true
