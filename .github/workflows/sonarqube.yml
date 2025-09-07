@@ -40,7 +40,7 @@ jobs:
 
       - name: Build Backend
         run: |
-          cd e-learning-site/9antrakidsFormationBack
+          cd 9antrakidsFormationBack
           chmod +x mvnw
           ./mvnw clean compile -DskipTests
 
@@ -54,9 +54,9 @@ jobs:
             -Dsonar.projectKey=E-9antraKids-Backend \
             -Dsonar.projectName="E-9antraKids Backend" \
             -Dsonar.projectVersion=1.0 \
-            -Dsonar.projectBaseDir=e-learning-site/9antrakidsFormationBack \
-            -Dsonar.sources=e-learning-site/9antrakidsFormationBack/src \
-            -Dsonar.java.binaries=e-learning-site/9antrakidsFormationBack/target/classes \
+            -Dsonar.projectBaseDir=9antrakidsFormationBack \
+            -Dsonar.sources=9antrakidsFormationBack/src \
+            -Dsonar.java.binaries=9antrakidsFormationBack/target/classes \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.scanner.skipJreProvisioning=true
