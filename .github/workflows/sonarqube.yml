@@ -11,20 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Step 2: Set up Java
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # Step 3: Install SonarScanner CLI (latest compatible)
       - name: Install SonarScanner CLI
         run: |
           SCANNER_VERSION=4.16.0.5274
@@ -33,19 +30,16 @@ jobs:
           mv sonar-scanner-$SCANNER_VERSION-linux $HOME/sonar-scanner
           echo "$HOME/sonar-scanner/bin" >> $GITHUB_PATH
 
-      # Step 4: Build Backend (compile Java classes)
       - name: Build Backend
         run: |
           cd e-learning-site/9antrakidsFormationBack
           chmod +x mvnw
           ./mvnw clean compile -DskipTests
 
-      # Step 5: Debug - Check classes folder
       - name: Debug - Check compiled classes
         run: |
           ls -l e-learning-site/9antrakidsFormationBack/target/classes
 
-      # Step 6: Run SonarQube scan for Backend
       - name: Run SonarQube Scan (Backend)
         run: |
           sonar-scanner \
