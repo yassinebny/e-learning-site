@@ -32,27 +32,24 @@ jobs:
 
       - name: Build Backend
         run: |
-          cd 9antrakidsFormationBack
+          cd e-learning-site/9antrakidsFormationBack
           chmod +x mvnw
           ./mvnw clean compile -DskipTests
 
-      - name: Ensure compiled classes exist
+      - name: Verify compiled classes
         run: |
-          cd 9antrakidsFormationBack
-          if [ ! -d "target/classes" ]; then
-            ./mvnw install -DskipTests
-          fi
+          cd e-learning-site/9antrakidsFormationBack
           ls -l target/classes
 
-      - name: Run SonarQube Scan (Backend)
+      - name: Run SonarQube Scan
         run: |
           sonar-scanner \
             -Dsonar.projectKey=E-9antraKids-Backend \
             -Dsonar.projectName="E-9antraKids Backend" \
             -Dsonar.projectVersion=1.0 \
-            -Dsonar.projectBaseDir=9antrakidsFormationBack \
-            -Dsonar.sources=9antrakidsFormationBack/src \
-            -Dsonar.java.binaries=9antrakidsFormationBack/target/classes \
+            -Dsonar.projectBaseDir=e-learning-site/9antrakidsFormationBack \
+            -Dsonar.sources=e-learning-site/9antrakidsFormationBack/src \
+            -Dsonar.java.binaries=e-learning-site/9antrakidsFormationBack/target/classes \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.scanner.skipJreProvisioning=true
