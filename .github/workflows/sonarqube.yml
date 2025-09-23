@@ -1,4 +1,4 @@
-name: Build & Analyze Backend
+name: Build and Analyze Backend
 
 on:
   push:
