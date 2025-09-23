@@ -1,7 +1,7 @@
 version: "2"
-authtoken: 32NljZhCA9IbtLHfbPFsrht1LiY_5V1FXLCbxhD5dE4gt8tHk
+authtoken: 336YpZwTMnP2iON3nebz5ZQmBVk_3FxmwzgSjScJs61aohnpX
 tunnels:
   sonar:
     proto: http
     addr: sonar:9000
-    hostname: curmudgeonly-decurved-hilaria.ngrok-free.app
+    hostname: urinogenital-erratically-raegan.ngrok-free.dev
